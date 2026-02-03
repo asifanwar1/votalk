@@ -1,4 +1,11 @@
-import { StyleSheet, Text, View } from "react-native";
+import {
+    StyleSheet,
+    Text,
+    View,
+    TextInput,
+    TouchableOpacity,
+    ScrollView,
+} from "react-native";
 import React, { useState } from "react";
 import {
     MessageCircle,
@@ -8,6 +15,7 @@ import {
     EyeOff,
     User,
 } from "lucide-react-native";
+
 const Register = () => {
     const [formData, setFormData] = useState({
         name: "",
@@ -16,246 +24,442 @@ const Register = () => {
         confirmPassword: "",
     });
     const [showPassword, setShowPassword] = useState(false);
+
     return (
-        <View>
-            <div className="w-full h-full flex flex-col">
+        <View style={{ flex: 1 }}>
+            <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
                 {/* Header Section with Gradient */}
-                <div className="bg-gradient-to-br from-purple-500 via-pink-500 to-orange-400 rounded-b-[3rem] p-8 pb-12">
-                    <div className="text-center">
-                        <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-3xl flex items-center justify-center mx-auto mb-4">
-                            <MessageCircle size={10} />
-                        </div>
-                        <h1 className="text-white text-4xl font-bold mb-2">
-                            Join Votalk
-                        </h1>
-                        <p className="text-white/90 text-base">
+                <View style={styles.headerGradient}>
+                    <View style={{ alignItems: "center" }}>
+                        <View style={styles.headerIcon}>
+                            <MessageCircle size={40} color="#fff" />
+                        </View>
+                        <Text style={styles.headerTitle}>Join Votalk</Text>
+                        <Text style={styles.headerSubtitle}>
                             Start your language journey today
-                        </p>
-                    </div>
-                </div>
+                        </Text>
+                    </View>
+                </View>
 
                 {/* Form Section */}
-                <div className="flex-1 px-8 -mt-6 overflow-y-auto pb-8">
-                    <div className="bg-white rounded-3xl shadow-xl p-8">
-                        <h2 className="text-2xl font-bold text-gray-800 mb-6">
-                            Create Account
-                        </h2>
+                <View style={styles.formSection}>
+                    <View style={styles.formContainer}>
+                        <Text style={styles.signUpTitle}>Create Account</Text>
 
                         {/* Name Input */}
-                        <div className="mb-4">
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                                Full Name
-                            </label>
-                            <div className="relative">
-                                <User size={10} />
-                                <input
-                                    type="text"
-                                    name="name"
-                                    value={formData.name}
-                                    onChange={(e) => {}}
+                        <View style={{ marginBottom: 16 }}>
+                            <Text style={styles.label}>Full Name</Text>
+                            <View style={styles.inputWrapper}>
+                                <User size={20} style={styles.inputIcon} />
+                                <TextInput
+                                    style={styles.input}
                                     placeholder="John Doe"
-                                    className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                                    value={formData.name}
+                                    onChangeText={(text) =>
+                                        setFormData({ ...formData, name: text })
+                                    }
+                                    autoCapitalize="words"
                                 />
-                            </div>
-                        </div>
+                            </View>
+                        </View>
 
                         {/* Email Input */}
-                        <div className="mb-4">
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                                Email
-                            </label>
-                            <div className="relative">
-                                <Mail size={10} />
-                                <input
-                                    type="email"
-                                    name="email"
-                                    value={formData.email}
-                                    onChange={(e) => {}}
+                        <View style={{ marginBottom: 16 }}>
+                            <Text style={styles.label}>Email</Text>
+                            <View style={styles.inputWrapper}>
+                                <Mail size={20} style={styles.inputIcon} />
+                                <TextInput
+                                    style={styles.input}
                                     placeholder="your.email@example.com"
-                                    className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                                    value={formData.email}
+                                    onChangeText={(text) =>
+                                        setFormData({
+                                            ...formData,
+                                            email: text,
+                                        })
+                                    }
+                                    keyboardType="email-address"
+                                    autoCapitalize="none"
                                 />
-                            </div>
-                        </div>
+                            </View>
+                        </View>
 
                         {/* Password Input */}
-                        <div className="mb-4">
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                                Password
-                            </label>
-                            <div className="relative">
-                                <Lock size={10} />
-                                <input
-                                    type={showPassword ? "text" : "password"}
-                                    name="password"
-                                    value={formData.password}
-                                    onChange={() => {}}
+                        <View style={{ marginBottom: 16 }}>
+                            <Text style={styles.label}>Password</Text>
+                            <View style={styles.inputWrapper}>
+                                <Lock size={20} style={styles.inputIcon} />
+                                <TextInput
+                                    style={styles.input}
                                     placeholder="Create a strong password"
-                                    className="w-full pl-12 pr-12 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
-                                />
-                                <button
-                                    type="button"
-                                    onClick={() =>
-                                        setShowPassword(!showPassword)
+                                    value={formData.password}
+                                    onChangeText={(text) =>
+                                        setFormData({
+                                            ...formData,
+                                            password: text,
+                                        })
                                     }
-                                    className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                                    secureTextEntry={!showPassword}
+                                    autoCapitalize="none"
+                                />
+                                <TouchableOpacity
+                                    style={styles.eyeButton}
+                                    onPress={() =>
+                                        setShowPassword((prev) => !prev)
+                                    }
                                 >
                                     {showPassword ? (
-                                        <EyeOff size={10} />
+                                        <EyeOff size={20} color="#888" />
                                     ) : (
-                                        <Eye size={10} />
+                                        <Eye size={20} color="#888" />
                                     )}
-                                </button>
-                            </div>
-                            <p className="text-xs text-gray-500 mt-2 ml-1">
+                                </TouchableOpacity>
+                            </View>
+                            <Text style={styles.passwordHint}>
                                 At least 8 characters with numbers & symbols
-                            </p>
-                        </div>
+                            </Text>
+                        </View>
 
                         {/* Confirm Password Input */}
-                        <div className="mb-6">
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
-                                Confirm Password
-                            </label>
-                            <div className="relative">
-                                <Lock size={10} />
-                                <input
-                                    type={showPassword ? "text" : "password"}
-                                    name="confirmPassword"
-                                    value={formData.confirmPassword}
-                                    onChange={() => {}}
+                        <View style={{ marginBottom: 24 }}>
+                            <Text style={styles.label}>Confirm Password</Text>
+                            <View style={styles.inputWrapper}>
+                                <Lock size={20} style={styles.inputIcon} />
+                                <TextInput
+                                    style={styles.input}
                                     placeholder="Confirm your password"
-                                    className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-2xl focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                                    value={formData.confirmPassword}
+                                    onChangeText={(text) =>
+                                        setFormData({
+                                            ...formData,
+                                            confirmPassword: text,
+                                        })
+                                    }
+                                    secureTextEntry={!showPassword}
+                                    autoCapitalize="none"
                                 />
-                            </div>
-                        </div>
+                            </View>
+                        </View>
 
                         {/* Terms Checkbox */}
-                        <div className="mb-6">
-                            <label className="flex items-start gap-3 cursor-pointer">
-                                <input
-                                    type="checkbox"
-                                    className="mt-1 w-5 h-5 text-purple-600 border-gray-300 rounded focus:ring-purple-500"
-                                />
-                                <span className="text-sm text-gray-600">
-                                    I agree to the{" "}
-                                    <span className="text-purple-600 font-medium">
-                                        Terms of Service
-                                    </span>{" "}
-                                    and{" "}
-                                    <span className="text-purple-600 font-medium">
-                                        Privacy Policy
-                                    </span>
-                                </span>
-                            </label>
-                        </div>
+                        <View style={styles.checkboxRow}>
+                            <TouchableOpacity
+                                style={
+                                    styles.checkbox
+                                } /* implement checked state as needed */
+                            >
+                                {/* You can use a custom checkbox or a library */}
+                            </TouchableOpacity>
+                            <Text style={styles.termsText}>
+                                I agree to the{" "}
+                                <Text style={styles.link}>
+                                    Terms of Service
+                                </Text>{" "}
+                                and{" "}
+                                <Text style={styles.link}>Privacy Policy</Text>
+                            </Text>
+                        </View>
 
                         {/* Sign Up Button */}
-                        <button className="w-full bg-gradient-to-r from-purple-500 to-pink-600 text-white font-semibold py-4 rounded-2xl shadow-lg hover:shadow-xl transition-all mb-4">
-                            Create Account
-                        </button>
+                        <TouchableOpacity style={styles.signUpButton}>
+                            <Text style={styles.signUpButtonText}>
+                                Create Account
+                            </Text>
+                        </TouchableOpacity>
 
                         {/* Divider */}
-                        <div className="relative my-6">
-                            <div className="absolute inset-0 flex items-center">
-                                <div className="w-full border-t border-gray-200"></div>
-                            </div>
-                            <div className="relative flex justify-center text-sm">
-                                <span className="px-4 bg-white text-gray-500">
-                                    Or sign up with
-                                </span>
-                            </div>
-                        </div>
+                        <View style={styles.dividerContainer}>
+                            <View style={styles.dividerLine} />
+                            <Text style={styles.dividerText}>
+                                Or sign up with
+                            </Text>
+                            <View style={styles.dividerLine} />
+                        </View>
 
                         {/* Social Login */}
-                        <div className="grid grid-cols-2 gap-3 mb-6">
-                            <button className="flex items-center justify-center gap-2 py-3 px-4 bg-white border-2 border-gray-200 rounded-xl hover:border-purple-300 transition-all">
-                                {/* <svg className="w-5 h-5" viewBox="0 0 24 24">
-                                    <path
-                                        fill="#4285F4"
-                                        d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
-                                    />
-                                    <path
-                                        fill="#34A853"
-                                        d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
-                                    />
-                                    <path
-                                        fill="#FBBC05"
-                                        d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
-                                    />
-                                    <path
-                                        fill="#EA4335"
-                                        d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
-                                    />
-                                </svg> */}
-                                <span className="text-sm font-medium text-gray-700">
+                        <View style={styles.socialRow}>
+                            <TouchableOpacity style={styles.socialButton}>
+                                <Text style={styles.socialButtonText}>
                                     Google
-                                </span>
-                            </button>
-                            <button className="flex items-center justify-center gap-2 py-3 px-4 bg-white border-2 border-gray-200 rounded-xl hover:border-purple-300 transition-all">
-                                {/* <svg
-                                    className="w-5 h-5"
-                                    viewBox="0 0 24 24"
-                                    fill="#1877F2"
-                                >
-                                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                                </svg> */}
-                                <span className="text-sm font-medium text-gray-700">
+                                </Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity style={styles.socialButton}>
+                                <Text style={styles.socialButtonText}>
                                     Facebook
-                                </span>
-                            </button>
-                        </div>
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
 
                         {/* Sign In Link */}
-                        <div className="text-center">
-                            <span className="text-gray-600">
+                        <View style={{ alignItems: "center" }}>
+                            <Text style={styles.signinText}>
                                 Already have an account?{" "}
-                            </span>
-                            <button
-                                onClick={() => {}}
-                                className="text-purple-600 font-semibold hover:text-purple-700"
-                            >
-                                Sign In
-                            </button>
-                        </div>
-                    </div>
+                                <Text style={styles.signinLink}>Sign In</Text>
+                            </Text>
+                        </View>
+                    </View>
 
                     {/* Trust Indicators */}
-                    <div className="mt-6 bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl p-5">
-                        <div className="flex items-center justify-center gap-6 text-center">
-                            <div>
-                                <div className="text-2xl font-bold text-purple-600">
+                    <View style={styles.trustContainer}>
+                        <View style={styles.trustRow}>
+                            <View style={styles.trustItem}>
+                                <Text
+                                    style={[
+                                        styles.trustValue,
+                                        { color: "#8b5cf6" },
+                                    ]}
+                                >
                                     500K+
-                                </div>
-                                <div className="text-xs text-gray-600">
+                                </Text>
+                                <Text style={styles.trustLabel}>
                                     Active Learners
-                                </div>
-                            </div>
-                            <div className="w-px h-10 bg-gray-300"></div>
-                            <div>
-                                <div className="text-2xl font-bold text-pink-600">
+                                </Text>
+                            </View>
+                            <View style={styles.trustDivider} />
+                            <View style={styles.trustItem}>
+                                <Text
+                                    style={[
+                                        styles.trustValue,
+                                        { color: "#fb7185" },
+                                    ]}
+                                >
                                     4.9★
-                                </div>
-                                <div className="text-xs text-gray-600">
+                                </Text>
+                                <Text style={styles.trustLabel}>
                                     App Rating
-                                </div>
-                            </div>
-                            <div className="w-px h-10 bg-gray-300"></div>
-                            <div>
-                                <div className="text-2xl font-bold text-orange-600">
+                                </Text>
+                            </View>
+                            <View style={styles.trustDivider} />
+                            <View style={styles.trustItem}>
+                                <Text
+                                    style={[
+                                        styles.trustValue,
+                                        { color: "#f59e42" },
+                                    ]}
+                                >
                                     20+
-                                </div>
-                                <div className="text-xs text-gray-600">
-                                    Languages
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                </Text>
+                                <Text style={styles.trustLabel}>Languages</Text>
+                            </View>
+                        </View>
+                    </View>
+                </View>
+            </ScrollView>
         </View>
     );
 };
 
 export default Register;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+    headerGradient: {
+        backgroundColor: "#8b5cf6",
+        borderBottomLeftRadius: 48,
+        borderBottomRightRadius: 48,
+        padding: 32,
+        paddingBottom: 48,
+    },
+    headerIcon: {
+        width: 80,
+        height: 80,
+        backgroundColor: "rgba(255,255,255,0.2)",
+        borderRadius: 24,
+        alignItems: "center",
+        justifyContent: "center",
+        marginBottom: 16,
+    },
+    headerTitle: {
+        color: "#fff",
+        fontSize: 32,
+        fontWeight: "bold",
+        marginBottom: 8,
+        textAlign: "center",
+    },
+    headerSubtitle: {
+        color: "rgba(255,255,255,0.9)",
+        fontSize: 16,
+        textAlign: "center",
+    },
+    formSection: {
+        flex: 1,
+        paddingHorizontal: 32,
+        marginTop: -24,
+    },
+    formContainer: {
+        backgroundColor: "#fff",
+        borderRadius: 24,
+        shadowColor: "#000",
+        shadowOpacity: 0.08,
+        shadowRadius: 12,
+        shadowOffset: { width: 0, height: 4 },
+        elevation: 4,
+        padding: 32,
+        marginBottom: 16,
+    },
+    signUpTitle: {
+        fontSize: 24,
+        fontWeight: "bold",
+        color: "#1e293b",
+        marginBottom: 24,
+    },
+    label: {
+        fontSize: 14,
+        fontWeight: "500",
+        color: "#334155",
+        marginBottom: 8,
+    },
+    inputWrapper: {
+        flexDirection: "row",
+        alignItems: "center",
+        backgroundColor: "#f1f5f9",
+        borderRadius: 16,
+        borderWidth: 1,
+        borderColor: "#e5e7eb",
+        paddingHorizontal: 12,
+        paddingVertical: 4,
+        position: "relative",
+    },
+    inputIcon: {
+        marginRight: 8,
+    },
+    input: {
+        flex: 1,
+        paddingVertical: 12,
+        fontSize: 16,
+        color: "#1e293b",
+    },
+    eyeButton: {
+        position: "absolute",
+        right: 12,
+        top: "50%",
+        marginTop: -10,
+        padding: 4,
+    },
+    passwordHint: {
+        fontSize: 12,
+        color: "#64748b",
+        marginTop: 4,
+        marginLeft: 2,
+    },
+    checkboxRow: {
+        flexDirection: "row",
+        alignItems: "flex-start",
+        marginBottom: 24,
+        gap: 8,
+    },
+    checkbox: {
+        width: 20,
+        height: 20,
+        borderRadius: 4,
+        borderWidth: 1,
+        borderColor: "#a3a3a3",
+        marginTop: 2,
+        marginRight: 8,
+        backgroundColor: "#fff",
+    },
+    termsText: {
+        fontSize: 13,
+        color: "#64748b",
+        flex: 1,
+        flexWrap: "wrap",
+    },
+    link: {
+        color: "#8b5cf6",
+        fontWeight: "500",
+    },
+    signUpButton: {
+        backgroundColor: "#8b5cf6",
+        borderRadius: 16,
+        paddingVertical: 16,
+        alignItems: "center",
+        marginBottom: 16,
+        shadowColor: "#8b5cf6",
+        shadowOpacity: 0.2,
+        shadowRadius: 8,
+        shadowOffset: { width: 0, height: 4 },
+        elevation: 2,
+    },
+    signUpButtonText: {
+        color: "#fff",
+        fontWeight: "600",
+        fontSize: 16,
+    },
+    dividerContainer: {
+        flexDirection: "row",
+        alignItems: "center",
+        marginVertical: 16,
+    },
+    dividerLine: {
+        flex: 1,
+        height: 1,
+        backgroundColor: "#e5e7eb",
+    },
+    dividerText: {
+        marginHorizontal: 12,
+        color: "#64748b",
+        fontSize: 14,
+        backgroundColor: "#fff",
+        paddingHorizontal: 8,
+    },
+    socialRow: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        marginBottom: 24,
+        gap: 8,
+    },
+    socialButton: {
+        flex: 1,
+        alignItems: "center",
+        paddingVertical: 12,
+        backgroundColor: "#fff",
+        borderWidth: 2,
+        borderColor: "#e5e7eb",
+        borderRadius: 12,
+        marginHorizontal: 4,
+    },
+    socialButtonText: {
+        fontSize: 14,
+        fontWeight: "500",
+        color: "#334155",
+    },
+    signinText: {
+        color: "#64748b",
+        fontSize: 14,
+    },
+    signinLink: {
+        color: "#6366f1",
+        fontWeight: "600",
+    },
+    trustContainer: {
+        backgroundColor: "#faf5ff",
+        borderRadius: 16,
+        padding: 20,
+        marginTop: 16,
+        marginBottom: 32,
+    },
+    trustRow: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    trustItem: {
+        alignItems: "center",
+        flex: 1,
+    },
+    trustValue: {
+        fontSize: 20,
+        fontWeight: "bold",
+        marginBottom: 2,
+    },
+    trustLabel: {
+        fontSize: 12,
+        color: "#64748b",
+        textAlign: "center",
+    },
+    trustDivider: {
+        width: 1,
+        height: 40,
+        backgroundColor: "#e5e7eb",
+        marginHorizontal: 8,
+    },
+});

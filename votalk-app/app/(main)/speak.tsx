@@ -1,4 +1,11 @@
-import { StyleSheet, Text, View } from "react-native";
+import {
+    StyleSheet,
+    Text,
+    View,
+    TouchableOpacity,
+    ScrollView,
+} from "react-native";
+import { Picker } from "@react-native-picker/picker";
 import React, { useState } from "react";
 import {
     Globe,
@@ -11,6 +18,7 @@ import {
 
 const Speak = () => {
     const [isRecording, setIsRecording] = useState(false);
+    const [selectedLanguage, setSelectedLanguage] = useState("English");
     const languages = [
         "English",
         "Arabic",
@@ -20,119 +28,355 @@ const Speak = () => {
         "Chinese",
     ];
     return (
-        <View>
-            <div className="flex-1 flex flex-col">
-                {/* Header */}
-                <div className="bg-gradient-to-r from-indigo-500 to-purple-600 p-4 rounded-b-3xl">
-                    <div className="flex items-center justify-between mb-3">
-                        <button onClick={() => {}} className="text-white">
-                            ← Back
-                        </button>
-                        <div className="flex items-center gap-2 bg-white/20 backdrop-blur-sm rounded-full px-3 py-1">
-                            <Globe size={10} />
-                            <select className="bg-transparent text-white text-sm font-medium border-none outline-none">
-                                {languages.map((lang) => (
-                                    <option key={lang} value={lang}>
-                                        {lang}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                    </div>
-                    <div className="text-center">
-                        <div className="text-white/80 text-sm mb-1">
-                            ✈️ Travel Mode
-                        </div>
-                        <div className="text-white font-semibold">
-                            Airport Check-in
-                        </div>
-                    </div>
-                </div>
-
-                {/* AI Avatar */}
-                <div className="flex justify-center py-6">
-                    <div className="relative">
-                        <div
-                            className={`w-24 h-24 rounded-full bg-gradient-to-br from-indigo-400 to-purple-500 flex items-center justify-center ${
-                                isRecording ? "animate-pulse" : ""
-                            }`}
+        <View style={{ flex: 1 }}>
+            {/* Header */}
+            <View style={styles.headerGradient}>
+                <View style={styles.headerRow}>
+                    <TouchableOpacity onPress={() => {}}>
+                        <Text style={styles.headerBack}>← Back</Text>
+                    </TouchableOpacity>
+                    <View style={styles.languagePickerContainer}>
+                        <Globe size={18} color="#fff" />
+                        <Picker
+                            selectedValue={selectedLanguage}
+                            style={styles.picker}
+                            dropdownIconColor="#fff"
+                            onValueChange={(itemValue) =>
+                                setSelectedLanguage(itemValue)
+                            }
                         >
-                            <Volume2 size={10} />
-                        </div>
-                        {isRecording && (
-                            <div className="absolute inset-0 rounded-full border-4 border-indigo-300 animate-ping"></div>
-                        )}
-                    </div>
-                </div>
+                            {languages.map((lang) => (
+                                <Picker.Item
+                                    key={lang}
+                                    label={lang}
+                                    value={lang}
+                                    color="#000"
+                                />
+                            ))}
+                        </Picker>
+                    </View>
+                </View>
+                <View style={styles.headerCenter}>
+                    <Text style={styles.headerMode}>✈️ Travel Mode</Text>
+                    <Text style={styles.headerTitle}>Airport Check-in</Text>
+                </View>
+            </View>
 
-                {/* Chat Messages */}
-                <div className="flex-1 overflow-y-auto px-4 space-y-4">
-                    <div className="flex gap-2">
-                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-400 to-purple-500 flex items-center justify-center flex-shrink-0">
-                            <span className="text-white text-xs">AI</span>
-                        </div>
-                        <div className="bg-gray-100 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[80%]">
-                            <p className="text-gray-800">
-                                Hello! I'm the airport check-in agent. How can I
-                                help you today?
-                            </p>
-                            <button className="mt-2 text-indigo-600 text-sm flex items-center gap-1">
-                                <Play size={10} /> Play
-                            </button>
-                        </div>
-                    </div>
+            {/* AI Avatar */}
+            <View style={styles.avatarSection}>
+                <View style={styles.avatarWrapper}>
+                    <View
+                        style={[
+                            styles.avatar,
+                            isRecording ? styles.avatarPulse : null,
+                        ]}
+                    >
+                        <Volume2 size={36} color="#fff" />
+                    </View>
+                    {isRecording && <View style={styles.avatarPing} />}
+                </View>
+            </View>
 
-                    <div className="flex gap-2 justify-end">
-                        <div className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white rounded-2xl rounded-tr-sm px-4 py-3 max-w-[80%]">
-                            <p>I'd like to check in for my flight to Paris.</p>
-                            <div className="mt-2 bg-white/20 rounded-lg p-2 text-xs">
-                                <div className="flex items-center justify-between mb-1">
-                                    <span>Pronunciation</span>
-                                    <span className="font-bold">92/100</span>
-                                </div>
-                                <div className="w-full bg-white/20 rounded-full h-1.5">
-                                    <div
-                                        className="bg-green-300 h-1.5 rounded-full"
-                                        style={{ width: "92%" }}
-                                    ></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="w-8 h-8 rounded-full bg-gradient-to-br from-green-400 to-emerald-500 flex items-center justify-center flex-shrink-0">
-                            <span className="text-white text-xs">You</span>
-                        </div>
-                    </div>
-                </div>
+            {/* Chat Messages */}
+            <ScrollView
+                style={styles.chatSection}
+                contentContainerStyle={{ paddingVertical: 8 }}
+            >
+                <View style={styles.chatRow}>
+                    <View style={styles.avatarSmallAI}>
+                        <Text style={styles.avatarSmallText}>AI</Text>
+                    </View>
+                    <View style={styles.chatBubbleAI}>
+                        <Text style={styles.chatTextAI}>
+                            Hello! I'm the airport check-in agent. How can I
+                            help you today?
+                        </Text>
+                        <TouchableOpacity style={styles.playButton}>
+                            <Play size={16} color="#6366f1" />
+                            <Text style={styles.playButtonText}>Play</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
 
-                {/* Input Area */}
-                <div className="p-4 bg-white border-t border-gray-200">
-                    <div className="flex items-center gap-3">
-                        <button className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors">
-                            <Camera size={10} />
-                        </button>
+                <View style={[styles.chatRow, { justifyContent: "flex-end" }]}>
+                    <View style={styles.chatBubbleUser}>
+                        <Text style={styles.chatTextUser}>
+                            I'd like to check in for my flight to Paris.
+                        </Text>
+                        <View style={styles.pronunciationBox}>
+                            <View style={styles.pronunciationRow}>
+                                <Text style={styles.pronunciationLabel}>
+                                    Pronunciation
+                                </Text>
+                                <Text style={styles.pronunciationScore}>
+                                    92/100
+                                </Text>
+                            </View>
+                            <View style={styles.pronunciationBarBg}>
+                                <View
+                                    style={[
+                                        styles.pronunciationBarFill,
+                                        { width: "92%" },
+                                    ]}
+                                />
+                            </View>
+                        </View>
+                    </View>
+                    <View style={styles.avatarSmallUser}>
+                        <Text style={styles.avatarSmallText}>You</Text>
+                    </View>
+                </View>
+            </ScrollView>
 
-                        <button
-                            onClick={() => setIsRecording(!isRecording)}
-                            className={`flex-1 h-14 rounded-full flex items-center justify-center gap-2 font-semibold transition-all ${
-                                isRecording
-                                    ? "bg-red-500 text-white shadow-lg"
-                                    : "bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-md"
-                            }`}
-                        >
-                            <Mic size={10} />
-                            {isRecording ? "Listening..." : "Tap to Speak"}
-                        </button>
-
-                        <button className="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center hover:bg-gray-200 transition-colors">
-                            <MessageCircle size={10} />
-                        </button>
-                    </div>
-                </div>
-            </div>
+            {/* Input Area */}
+            <View style={styles.inputSection}>
+                <TouchableOpacity style={styles.inputIconButton}>
+                    <Camera size={22} color="#6366f1" />
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={[
+                        styles.speakButton,
+                        isRecording
+                            ? styles.speakButtonActive
+                            : styles.speakButtonInactive,
+                    ]}
+                    onPress={() => setIsRecording(!isRecording)}
+                >
+                    <Mic size={22} color="#fff" />
+                    <Text style={styles.speakButtonText}>
+                        {isRecording ? "Listening..." : "Tap to Speak"}
+                    </Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.inputIconButton}>
+                    <MessageCircle size={22} color="#6366f1" />
+                </TouchableOpacity>
+            </View>
         </View>
     );
 };
 
 export default Speak;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+    headerGradient: {
+        backgroundColor: "#6366f1",
+        padding: 16,
+        borderBottomLeftRadius: 32,
+        borderBottomRightRadius: 32,
+    },
+    headerRow: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        marginBottom: 12,
+    },
+    headerBack: {
+        color: "#fff",
+        fontSize: 16,
+    },
+    languagePickerContainer: {
+        flexDirection: "row",
+        alignItems: "center",
+        backgroundColor: "rgba(255,255,255,0.2)",
+        borderRadius: 999,
+        paddingHorizontal: 12,
+        paddingVertical: 2,
+    },
+    picker: {
+        color: "#fff",
+        width: 120,
+        marginLeft: 4,
+        backgroundColor: "transparent",
+    },
+    headerCenter: {
+        alignItems: "center",
+    },
+    headerMode: {
+        color: "rgba(255,255,255,0.8)",
+        fontSize: 14,
+        marginBottom: 2,
+    },
+    headerTitle: {
+        color: "#fff",
+        fontWeight: "bold",
+        fontSize: 18,
+    },
+    avatarSection: {
+        alignItems: "center",
+        paddingVertical: 24,
+    },
+    avatarWrapper: {
+        position: "relative",
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    avatar: {
+        width: 96,
+        height: 96,
+        borderRadius: 48,
+        backgroundColor: "#8b5cf6",
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    avatarPulse: {
+        // You can add animation here if needed
+    },
+    avatarPing: {
+        position: "absolute",
+        top: -8,
+        left: -8,
+        right: -8,
+        bottom: -8,
+        borderRadius: 56,
+        borderWidth: 4,
+        borderColor: "#a5b4fc",
+        opacity: 0.5,
+    },
+    chatSection: {
+        flex: 1,
+        paddingHorizontal: 16,
+    },
+    chatRow: {
+        flexDirection: "row",
+        alignItems: "flex-end",
+        marginBottom: 16,
+    },
+    avatarSmallAI: {
+        width: 32,
+        height: 32,
+        borderRadius: 16,
+        backgroundColor: "#8b5cf6",
+        alignItems: "center",
+        justifyContent: "center",
+        marginRight: 8,
+    },
+    avatarSmallUser: {
+        width: 32,
+        height: 32,
+        borderRadius: 16,
+        backgroundColor: "#34d399",
+        alignItems: "center",
+        justifyContent: "center",
+        marginLeft: 8,
+    },
+    avatarSmallText: {
+        color: "#fff",
+        fontSize: 12,
+        fontWeight: "bold",
+    },
+    chatBubbleAI: {
+        backgroundColor: "#f1f5f9",
+        borderRadius: 18,
+        borderTopLeftRadius: 4,
+        paddingHorizontal: 16,
+        paddingVertical: 12,
+        maxWidth: "80%",
+        flex: 1,
+    },
+    chatBubbleUser: {
+        backgroundColor: "#6366f1",
+        borderRadius: 18,
+        borderTopRightRadius: 4,
+        paddingHorizontal: 16,
+        paddingVertical: 12,
+        maxWidth: "80%",
+        flex: 1,
+    },
+    chatTextAI: {
+        color: "#1e293b",
+        fontSize: 15,
+    },
+    chatTextUser: {
+        color: "#fff",
+        fontSize: 15,
+    },
+    playButton: {
+        flexDirection: "row",
+        alignItems: "center",
+        marginTop: 8,
+    },
+    playButtonText: {
+        color: "#6366f1",
+        fontSize: 14,
+        marginLeft: 4,
+    },
+    pronunciationBox: {
+        marginTop: 10,
+        backgroundColor: "rgba(255,255,255,0.15)",
+        borderRadius: 8,
+        padding: 8,
+    },
+    pronunciationRow: {
+        flexDirection: "row",
+        justifyContent: "space-between",
+        marginBottom: 4,
+    },
+    pronunciationLabel: {
+        color: "#fff",
+        fontSize: 12,
+    },
+    pronunciationScore: {
+        color: "#fff",
+        fontWeight: "bold",
+        fontSize: 12,
+    },
+    pronunciationBarBg: {
+        width: "100%",
+        backgroundColor: "rgba(255,255,255,0.2)",
+        borderRadius: 8,
+        height: 6,
+        overflow: "hidden",
+    },
+    pronunciationBarFill: {
+        backgroundColor: "#bbf7d0",
+        height: 6,
+        borderRadius: 8,
+    },
+    inputSection: {
+        flexDirection: "row",
+        alignItems: "center",
+        padding: 16,
+        backgroundColor: "#fff",
+        borderTopWidth: 1,
+        borderTopColor: "#e5e7eb",
+    },
+    inputIconButton: {
+        width: 40,
+        height: 40,
+        borderRadius: 20,
+        backgroundColor: "#f1f5f9",
+        alignItems: "center",
+        justifyContent: "center",
+        marginHorizontal: 4,
+    },
+    speakButton: {
+        flex: 1,
+        height: 56,
+        borderRadius: 28,
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "center",
+        marginHorizontal: 8,
+        gap: 8,
+    },
+    speakButtonActive: {
+        backgroundColor: "#ef4444",
+        shadowColor: "#ef4444",
+        shadowOpacity: 0.3,
+        shadowRadius: 8,
+        shadowOffset: { width: 0, height: 4 },
+    },
+    speakButtonInactive: {
+        backgroundColor: "#6366f1",
+        shadowColor: "#6366f1",
+        shadowOpacity: 0.2,
+        shadowRadius: 6,
+        shadowOffset: { width: 0, height: 2 },
+    },
+    speakButtonText: {
+        color: "#fff",
+        fontWeight: "600",
+        fontSize: 16,
+        marginLeft: 8,
+    },
+});

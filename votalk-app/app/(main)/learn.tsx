@@ -1,77 +1,176 @@
-import { StyleSheet, Text, View } from "react-native";
+import {
+    StyleSheet,
+    Text,
+    View,
+    TouchableOpacity,
+    ScrollView,
+} from "react-native";
 import React from "react";
 import { BookOpen, Zap } from "lucide-react-native";
 
+const vocabList = [
+    "Boarding pass",
+    "Departure gate",
+    "Baggage claim",
+    "Customs",
+];
+
 const Learn = () => {
     return (
-        <View>
-            <div className="flex-1 overflow-y-auto pb-24 px-6 pt-6">
-                <h1 className="text-2xl font-bold text-gray-800 mb-6">
-                    Learn & Practice
-                </h1>
+        <View style={{ flex: 1 }}>
+            <ScrollView
+                contentContainerStyle={{
+                    paddingBottom: 96,
+                    paddingHorizontal: 24,
+                    paddingTop: 24,
+                }}
+            >
+                <Text style={styles.header}>Learn & Practice</Text>
 
-                <div className="space-y-4">
-                    <div className="bg-gradient-to-br from-orange-400 to-pink-500 rounded-2xl p-5 text-white shadow-md">
-                        <div className="flex items-center gap-3 mb-2">
-                            <BookOpen size={10} />
-                            <h3 className="font-semibold text-lg">
-                                AI-Generated Lessons
-                            </h3>
-                        </div>
-                        <p className="text-sm text-white/80 mb-4">
-                            Personalized vocabulary, quizzes, and flashcards
-                        </p>
-                        <button className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg text-sm font-medium">
+                {/* AI-Generated Lessons */}
+                <View style={[styles.card, styles.orangePinkGradient]}>
+                    <View style={styles.row}>
+                        <BookOpen size={24} color="#fff" />
+                        <Text style={styles.cardTitle}>
+                            AI-Generated Lessons
+                        </Text>
+                    </View>
+                    <Text style={styles.cardDesc}>
+                        Personalized vocabulary, quizzes, and flashcards
+                    </Text>
+                    <TouchableOpacity style={styles.cardButton}>
+                        <Text style={styles.cardButtonText}>
                             Start Learning
-                        </button>
-                    </div>
+                        </Text>
+                    </TouchableOpacity>
+                </View>
 
-                    <div className="bg-gradient-to-br from-cyan-400 to-blue-500 rounded-2xl p-5 text-white shadow-md">
-                        <div className="flex items-center gap-3 mb-2">
-                            <Zap size={10} />
-                            <h3 className="font-semibold text-lg">
-                                Pronunciation Practice
-                            </h3>
-                        </div>
-                        <p className="text-sm text-white/80 mb-4">
-                            Real-time phoneme-level feedback
-                        </p>
-                        <button className="bg-white/20 backdrop-blur-sm px-4 py-2 rounded-lg text-sm font-medium">
-                            Practice Now
-                        </button>
-                    </div>
+                {/* Pronunciation Practice */}
+                <View style={[styles.card, styles.cyanBlueGradient]}>
+                    <View style={styles.row}>
+                        <Zap size={24} color="#fff" />
+                        <Text style={styles.cardTitle}>
+                            Pronunciation Practice
+                        </Text>
+                    </View>
+                    <Text style={styles.cardDesc}>
+                        Real-time phoneme-level feedback
+                    </Text>
+                    <TouchableOpacity style={styles.cardButton}>
+                        <Text style={styles.cardButtonText}>Practice Now</Text>
+                    </TouchableOpacity>
+                </View>
 
-                    <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-200">
-                        <h3 className="font-semibold text-lg text-gray-800 mb-3">
-                            Vocabulary This Week
-                        </h3>
-                        <div className="space-y-2">
-                            {[
-                                "Boarding pass",
-                                "Departure gate",
-                                "Baggage claim",
-                                "Customs",
-                            ].map((word, idx) => (
-                                <div
-                                    key={idx}
-                                    className="flex items-center justify-between py-2 border-b border-gray-100 last:border-0"
-                                >
-                                    <span className="text-gray-700">
-                                        {word}
-                                    </span>
-                                    <button className="text-indigo-600 text-sm font-medium">
+                {/* Vocabulary This Week */}
+                <View style={[styles.card, styles.vocabCard]}>
+                    <Text style={[styles.cardTitle, styles.vocabTitle]}>
+                        Vocabulary This Week
+                    </Text>
+                    <View>
+                        {vocabList.map((word, idx) => (
+                            <View
+                                key={idx}
+                                style={[
+                                    styles.vocabRow,
+                                    idx === vocabList.length - 1 && {
+                                        borderBottomWidth: 0,
+                                    },
+                                ]}
+                            >
+                                <Text style={styles.vocabWord}>{word}</Text>
+                                <TouchableOpacity>
+                                    <Text style={styles.vocabReview}>
                                         Review
-                                    </button>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </div>
+                                    </Text>
+                                </TouchableOpacity>
+                            </View>
+                        ))}
+                    </View>
+                </View>
+            </ScrollView>
         </View>
     );
 };
 
 export default Learn;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+    header: {
+        fontSize: 24,
+        fontWeight: "bold",
+        color: "#1e293b",
+        marginBottom: 24,
+    },
+    card: {
+        borderRadius: 20,
+        padding: 20,
+        marginBottom: 16,
+        shadowColor: "#000",
+        shadowOpacity: 0.08,
+        shadowRadius: 8,
+        shadowOffset: { width: 0, height: 2 },
+        elevation: 2,
+    },
+    orangePinkGradient: {
+        backgroundColor: "#fb7185", // fallback for gradient
+    },
+    cyanBlueGradient: {
+        backgroundColor: "#38bdf8", // fallback for gradient
+    },
+    row: {
+        flexDirection: "row",
+        alignItems: "center",
+        gap: 12,
+        marginBottom: 8,
+    },
+    cardTitle: {
+        fontWeight: "600",
+        fontSize: 18,
+        color: "#fff",
+        marginLeft: 8,
+    },
+    cardDesc: {
+        fontSize: 14,
+        color: "rgba(255,255,255,0.85)",
+        marginBottom: 16,
+    },
+    cardButton: {
+        backgroundColor: "rgba(255,255,255,0.2)",
+        paddingHorizontal: 16,
+        paddingVertical: 8,
+        borderRadius: 10,
+        alignSelf: "flex-start",
+    },
+    cardButtonText: {
+        color: "#fff",
+        fontWeight: "500",
+        fontSize: 14,
+    },
+    vocabCard: {
+        backgroundColor: "#fff",
+        borderWidth: 1,
+        borderColor: "#e5e7eb",
+        shadowOpacity: 0.04,
+    },
+    vocabTitle: {
+        color: "#1e293b",
+        marginBottom: 12,
+    },
+    vocabRow: {
+        flexDirection: "row",
+        alignItems: "center",
+        justifyContent: "space-between",
+        paddingVertical: 12,
+        borderBottomWidth: 1,
+        borderBottomColor: "#f1f5f9",
+    },
+    vocabWord: {
+        color: "#334155",
+        fontSize: 15,
+    },
+    vocabReview: {
+        color: "#6366f1",
+        fontSize: 14,
+        fontWeight: "500",
+    },
+});

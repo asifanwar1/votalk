@@ -4,95 +4,222 @@ import { Award } from "lucide-react-native";
 
 const Progress = () => {
     return (
-        <View>
-            <div className="flex-1 overflow-y-auto pb-24 px-6 pt-6">
-                <h1 className="text-2xl font-bold text-gray-800 mb-6">
-                    Your Progress
-                </h1>
+        <View
+            style={{
+                flex: 1,
+                paddingBottom: 96,
+                paddingHorizontal: 24,
+                paddingTop: 24,
+            }}
+        >
+            {/* Header */}
+            <Text style={styles.header}>Your Progress</Text>
 
-                <div className="bg-gradient-to-br from-emerald-400 to-green-500 rounded-2xl p-6 text-white shadow-md mb-6">
-                    <div className="flex items-center gap-3 mb-4">
-                        <Award size={10} />
-                        <div>
-                            <div className="text-2xl font-bold">Level 12</div>
-                            <div className="text-sm text-white/80">
-                                Intermediate Speaker
-                            </div>
-                        </div>
-                    </div>
-                    <div className="bg-white/20 rounded-full h-2 mb-2">
-                        <div
-                            className="bg-white h-2 rounded-full"
-                            style={{ width: "65%" }}
-                        ></div>
-                    </div>
-                    <div className="text-xs text-white/80">
-                        650/1000 XP to Level 13
-                    </div>
-                </div>
+            {/* Level Card */}
+            <View style={styles.levelCard}>
+                <View style={styles.levelRow}>
+                    <Award size={28} color="#fff" />
+                    <View style={{ marginLeft: 12 }}>
+                        <Text style={styles.levelNumber}>Level 12</Text>
+                        <Text style={styles.levelLabel}>
+                            Intermediate Speaker
+                        </Text>
+                    </View>
+                </View>
+                <View style={styles.progressBarBg}>
+                    <View style={[styles.progressBarFill, { width: "65%" }]} />
+                </View>
+                <Text style={styles.progressText}>650/1000 XP to Level 13</Text>
+            </View>
 
-                <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-200 mb-4">
-                    <h3 className="font-semibold text-lg text-gray-800 mb-4">
-                        Weekly Stats
-                    </h3>
-                    <div className="grid grid-cols-2 gap-4">
-                        <div className="text-center p-4 bg-indigo-50 rounded-xl">
-                            <div className="text-3xl font-bold text-indigo-600">
-                                47
-                            </div>
-                            <div className="text-sm text-gray-600">
-                                Minutes Practiced
-                            </div>
-                        </div>
-                        <div className="text-center p-4 bg-purple-50 rounded-xl">
-                            <div className="text-3xl font-bold text-purple-600">
-                                156
-                            </div>
-                            <div className="text-sm text-gray-600">
-                                Words Learned
-                            </div>
-                        </div>
-                        <div className="text-center p-4 bg-green-50 rounded-xl">
-                            <div className="text-3xl font-bold text-green-600">
-                                89%
-                            </div>
-                            <div className="text-sm text-gray-600">
-                                Accuracy
-                            </div>
-                        </div>
-                        <div className="text-center p-4 bg-orange-50 rounded-xl">
-                            <div className="text-3xl font-bold text-orange-600">
-                                12
-                            </div>
-                            <div className="text-sm text-gray-600">
-                                Scenarios Done
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            {/* Weekly Stats */}
+            <View style={styles.statsCard}>
+                <Text style={styles.statsTitle}>Weekly Stats</Text>
+                <View style={styles.statsGrid}>
+                    <View
+                        style={[styles.statBox, { backgroundColor: "#eef2ff" }]}
+                    >
+                        <Text style={[styles.statValue, { color: "#6366f1" }]}>
+                            47
+                        </Text>
+                        <Text style={styles.statLabel}>Minutes Practiced</Text>
+                    </View>
+                    <View
+                        style={[styles.statBox, { backgroundColor: "#f3e8ff" }]}
+                    >
+                        <Text style={[styles.statValue, { color: "#a21caf" }]}>
+                            156
+                        </Text>
+                        <Text style={styles.statLabel}>Words Learned</Text>
+                    </View>
+                    <View
+                        style={[styles.statBox, { backgroundColor: "#dcfce7" }]}
+                    >
+                        <Text style={[styles.statValue, { color: "#16a34a" }]}>
+                            89%
+                        </Text>
+                        <Text style={styles.statLabel}>Accuracy</Text>
+                    </View>
+                    <View
+                        style={[styles.statBox, { backgroundColor: "#ffedd5" }]}
+                    >
+                        <Text style={[styles.statValue, { color: "#ea580c" }]}>
+                            12
+                        </Text>
+                        <Text style={styles.statLabel}>Scenarios Done</Text>
+                    </View>
+                </View>
+            </View>
 
-                <div className="bg-white rounded-2xl p-5 shadow-sm border border-gray-200">
-                    <h3 className="font-semibold text-lg text-gray-800 mb-3">
-                        Achievements
-                    </h3>
-                    <div className="grid grid-cols-4 gap-3">
-                        {["🔥", "⭐", "🎯", "💎", "🏆", "👑", "⚡", "🌟"].map(
-                            (emoji, idx) => (
-                                <div
-                                    key={idx}
-                                    className="aspect-square bg-gradient-to-br from-yellow-100 to-orange-100 rounded-xl flex items-center justify-center text-3xl"
-                                >
+            {/* Achievements */}
+            <View style={styles.achievementsCard}>
+                <Text style={styles.achievementsTitle}>Achievements</Text>
+                <View style={styles.achievementsGrid}>
+                    {["🔥", "⭐", "🎯", "💎", "🏆", "👑", "⚡", "🌟"].map(
+                        (emoji, idx) => (
+                            <View key={idx} style={styles.achievementBox}>
+                                <Text style={styles.achievementEmoji}>
                                     {emoji}
-                                </div>
-                            )
-                        )}
-                    </div>
-                </div>
-            </div>
+                                </Text>
+                            </View>
+                        ),
+                    )}
+                </View>
+            </View>
         </View>
     );
 };
 
 export default Progress;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+    header: {
+        fontSize: 24,
+        fontWeight: "bold",
+        color: "#1e293b",
+        marginBottom: 24,
+    },
+    levelCard: {
+        backgroundColor: "#34d399",
+        borderRadius: 20,
+        padding: 24,
+        marginBottom: 20,
+        shadowColor: "#000",
+        shadowOpacity: 0.08,
+        shadowRadius: 8,
+        shadowOffset: { width: 0, height: 2 },
+        elevation: 2,
+    },
+    levelRow: {
+        flexDirection: "row",
+        alignItems: "center",
+        marginBottom: 16,
+    },
+    levelNumber: {
+        color: "#fff",
+        fontSize: 28,
+        fontWeight: "bold",
+    },
+    levelLabel: {
+        color: "rgba(255,255,255,0.8)",
+        fontSize: 15,
+        marginTop: 2,
+    },
+    progressBarBg: {
+        backgroundColor: "rgba(255,255,255,0.2)",
+        borderRadius: 8,
+        height: 8,
+        marginBottom: 8,
+        overflow: "hidden",
+    },
+    progressBarFill: {
+        backgroundColor: "#fff",
+        height: 8,
+        borderRadius: 8,
+    },
+    progressText: {
+        color: "rgba(255,255,255,0.8)",
+        fontSize: 12,
+    },
+    statsCard: {
+        backgroundColor: "#fff",
+        borderRadius: 20,
+        padding: 20,
+        marginBottom: 16,
+        shadowColor: "#000",
+        shadowOpacity: 0.04,
+        shadowRadius: 4,
+        shadowOffset: { width: 0, height: 1 },
+        elevation: 1,
+        borderWidth: 1,
+        borderColor: "#e5e7eb",
+    },
+    statsTitle: {
+        fontWeight: "600",
+        fontSize: 18,
+        color: "#1e293b",
+        marginBottom: 16,
+    },
+    statsGrid: {
+        flexDirection: "row",
+        flexWrap: "wrap",
+        justifyContent: "space-between",
+        gap: 12,
+    },
+    statBox: {
+        flexBasis: "48%",
+        alignItems: "center",
+        paddingVertical: 16,
+        borderRadius: 14,
+        marginBottom: 12,
+    },
+    statValue: {
+        fontSize: 24,
+        fontWeight: "bold",
+        marginBottom: 4,
+    },
+    statLabel: {
+        fontSize: 13,
+        color: "#64748b",
+        textAlign: "center",
+    },
+    achievementsCard: {
+        backgroundColor: "#fff",
+        borderRadius: 20,
+        padding: 20,
+        marginBottom: 16,
+        shadowColor: "#000",
+        shadowOpacity: 0.04,
+        shadowRadius: 4,
+        shadowOffset: { width: 0, height: 1 },
+        elevation: 1,
+        borderWidth: 1,
+        borderColor: "#e5e7eb",
+    },
+    achievementsTitle: {
+        fontWeight: "600",
+        fontSize: 18,
+        color: "#1e293b",
+        marginBottom: 12,
+    },
+    achievementsGrid: {
+        flexDirection: "row",
+        flexWrap: "wrap",
+        gap: 10,
+        justifyContent: "flex-start",
+    },
+    achievementBox: {
+        width: 56,
+        height: 56,
+        borderRadius: 14,
+        backgroundColor: "#fef3c7",
+        alignItems: "center",
+        justifyContent: "center",
+        marginRight: 10,
+        marginBottom: 10,
+    },
+    achievementEmoji: {
+        fontSize: 28,
+        textAlign: "center",
+    },
+});
