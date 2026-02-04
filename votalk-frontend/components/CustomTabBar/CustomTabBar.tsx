@@ -296,7 +296,7 @@
 
 import React from "react";
 
-const CustomTabBar = () => {
+const CustomTabBar = (props: any) => {
     return <div>CustomTabBar</div>;
 };
 

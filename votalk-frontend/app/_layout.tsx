@@ -5,7 +5,7 @@ import { StatusBar } from "expo-status-bar";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { KeyboardProvider } from "react-native-keyboard-controller";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
+// import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 
 const RootLayout = () => {
     return (
@@ -19,9 +19,9 @@ const RootLayout = () => {
             <GestureHandlerRootView>
                 <SafeAreaProvider>
                     <KeyboardProvider>
-                        <BottomSheetModalProvider>
-                            <Slot />
-                        </BottomSheetModalProvider>
+                        {/* <BottomSheetModalProvider> */}
+                        <Slot />
+                        {/* </BottomSheetModalProvider> */}
                     </KeyboardProvider>
                 </SafeAreaProvider>
             </GestureHandlerRootView>
