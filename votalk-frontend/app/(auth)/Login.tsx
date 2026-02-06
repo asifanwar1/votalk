@@ -21,6 +21,7 @@ import {
     Zap,
     Award,
 } from "lucide-react-native";
+import { useLoginStyles } from "./Styles";
 
 const Login = () => {
     const [formData, setFormData] = useState({
@@ -29,6 +30,8 @@ const Login = () => {
     });
     const [showPassword, setShowPassword] = useState(false);
     const router = useRouter();
+
+    const styles = useLoginStyles();
 
     return (
         <SafeAreaView
@@ -180,7 +183,7 @@ const Login = () => {
                                     </Text>
                                     <TouchableOpacity
                                         onPress={() =>
-                                            router.push("/(auth)/register")
+                                            router.push("/(auth)/Register")
                                         }
                                         style={{ alignItems: "center" }}
                                     >
@@ -241,181 +244,3 @@ const Login = () => {
 };
 
 export default Login;
-
-const styles = StyleSheet.create({
-    headerGradient: {
-        backgroundColor: "#8b5cf6",
-        borderBottomLeftRadius: 48,
-        borderBottomRightRadius: 48,
-        padding: 32,
-        paddingBottom: 48,
-    },
-    headerIcon: {
-        width: 80,
-        height: 80,
-        backgroundColor: "rgba(255,255,255,0.2)",
-        borderRadius: 24,
-        alignItems: "center",
-        justifyContent: "center",
-        marginBottom: 16,
-    },
-    headerTitle: {
-        color: "#fff",
-        fontSize: 32,
-        fontWeight: "bold",
-        marginBottom: 8,
-        textAlign: "center",
-    },
-    headerSubtitle: {
-        color: "rgba(255,255,255,0.9)",
-        fontSize: 16,
-        textAlign: "center",
-    },
-    formSection: {
-        flex: 1,
-        paddingHorizontal: 32,
-        marginTop: -24,
-        paddingBottom: 32,
-    },
-    formContainer: {
-        backgroundColor: "#fff",
-        borderRadius: 24,
-        shadowColor: "#000",
-        shadowOpacity: 0.08,
-        shadowRadius: 12,
-        shadowOffset: { width: 0, height: 4 },
-        elevation: 4,
-        padding: 32,
-        marginBottom: 16,
-    },
-    signInTitle: {
-        fontSize: 24,
-        fontWeight: "bold",
-        color: "#1e293b",
-        marginBottom: 24,
-    },
-    label: {
-        fontSize: 14,
-        fontWeight: "500",
-        color: "#334155",
-        marginBottom: 8,
-    },
-    inputWrapper: {
-        flexDirection: "row",
-        alignItems: "center",
-        backgroundColor: "#f1f5f9",
-        borderRadius: 16,
-        borderWidth: 1,
-        borderColor: "#e5e7eb",
-        paddingHorizontal: 12,
-        paddingVertical: 4,
-        position: "relative",
-    },
-    inputIcon: {
-        marginRight: 8,
-    },
-    input: {
-        flex: 1,
-        paddingVertical: 12,
-        fontSize: 16,
-        color: "#1e293b",
-    },
-    eyeButton: {
-        position: "absolute",
-        right: 12,
-        top: "50%",
-        marginTop: -10,
-        padding: 4,
-    },
-    forgotPassword: {
-        fontSize: 14,
-        color: "#6366f1",
-        fontWeight: "500",
-    },
-    signInButton: {
-        backgroundColor: "#8b5cf6",
-        borderRadius: 16,
-        paddingVertical: 16,
-        alignItems: "center",
-        marginBottom: 16,
-        shadowColor: "#8b5cf6",
-        shadowOpacity: 0.2,
-        shadowRadius: 8,
-        shadowOffset: { width: 0, height: 4 },
-        elevation: 2,
-    },
-    signInButtonText: {
-        color: "#fff",
-        fontWeight: "600",
-        fontSize: 16,
-    },
-    dividerContainer: {
-        flexDirection: "row",
-        alignItems: "center",
-        marginVertical: 16,
-    },
-    dividerLine: {
-        flex: 1,
-        height: 1,
-        backgroundColor: "#e5e7eb",
-    },
-    dividerText: {
-        marginHorizontal: 12,
-        color: "#64748b",
-        fontSize: 14,
-        backgroundColor: "#fff",
-        paddingHorizontal: 8,
-    },
-    socialRow: {
-        flexDirection: "row",
-        justifyContent: "space-between",
-        marginBottom: 24,
-    },
-    socialButton: {
-        flex: 1,
-        alignItems: "center",
-        paddingVertical: 12,
-        backgroundColor: "#fff",
-        borderWidth: 2,
-        borderColor: "#e5e7eb",
-        borderRadius: 12,
-        marginHorizontal: 4,
-    },
-    socialButtonText: {
-        fontSize: 14,
-        fontWeight: "500",
-        color: "#334155",
-    },
-    signupText: {
-        color: "#64748b",
-        fontSize: 14,
-    },
-    signupLink: {
-        color: "#6366f1",
-        fontWeight: "600",
-    },
-    featuresRow: {
-        flexDirection: "row",
-        justifyContent: "space-between",
-        marginTop: 24,
-        marginBottom: 32,
-    },
-    featureItem: {
-        alignItems: "center",
-        flex: 1,
-    },
-    featureIcon: {
-        width: 48,
-        height: 48,
-        borderRadius: 12,
-        alignItems: "center",
-        justifyContent: "center",
-        marginBottom: 8,
-    },
-    featureText: {
-        fontSize: 12,
-        color: "#64748b",
-        fontWeight: "500",
-        textAlign: "center",
-    },
-});
