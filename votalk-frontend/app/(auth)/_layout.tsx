@@ -9,9 +9,10 @@ const AuthLayout = () => {
         <>
             <StatusBar style="auto" />
             <Stack
-                initialRouteName={AUTH_ROUTES.LOGIN}
+                initialRouteName={AUTH_ROUTES.WELCOME}
                 screenOptions={{ headerShown: false, animation: "none" }}
             >
+                <Stack.Screen name={AUTH_ROUTES.WELCOME} />
                 <Stack.Screen name={AUTH_ROUTES.LOGIN} />
                 <Stack.Screen name={AUTH_ROUTES.REGISTER} />
             </Stack>

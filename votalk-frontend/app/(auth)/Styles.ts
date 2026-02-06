@@ -397,3 +397,49 @@ export const useRegisterStyles = () => {
         },
     });
 };
+
+export const useWelcomeStyles = () => {
+    return StyleSheet.create({
+        container: {
+            flex: 1,
+            backgroundColor: colors.background,
+            justifyContent: "center",
+            alignItems: "center",
+            padding: 32,
+        },
+        title: {
+            fontSize: 32,
+            fontWeight: "bold",
+            color: colors.primary,
+            marginBottom: 16,
+            textAlign: "center",
+        },
+        subtitle: {
+            fontSize: 18,
+            color: colors.textSecondary,
+            marginBottom: 32,
+            textAlign: "center",
+        },
+        button: {
+            backgroundColor: colors.primary,
+            borderRadius: 16,
+            paddingVertical: 16,
+            paddingHorizontal: 32,
+            alignItems: "center",
+            marginBottom: 12,
+        },
+        buttonText: {
+            color: colors.background,
+            fontWeight: "600",
+            fontSize: 16,
+        },
+        outlineButton: {
+            borderWidth: 2,
+            borderColor: colors.primary,
+            backgroundColor: colors.background,
+        },
+        outlineButtonText: {
+            color: colors.primary,
+        },
+    });
+};
