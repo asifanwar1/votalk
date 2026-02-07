@@ -1,14 +1,33 @@
-import { Text, TouchableOpacity } from "react-native";
-import { useTheme } from "../../hooks/useTheme";
-import { createStyles } from "./styles";
+import {
+    StyleProp,
+    Text,
+    TextStyle,
+    TouchableOpacity,
+    ViewStyle,
+} from "react-native";
 
-export const Button = ({ title, onPress }: any) => {
-    const { colors } = useTheme();
-    const styles = createStyles(colors);
+type ButtonProps = {
+    title: string;
+    onPress: () => void;
+    buttonStyles?: StyleProp<ViewStyle>;
+    textStyles?: StyleProp<TextStyle>;
+    isDisabled?: boolean;
+};
 
+export const Button = ({
+    title,
+    onPress,
+    buttonStyles,
+    textStyles,
+    isDisabled,
+}: ButtonProps) => {
     return (
-        <TouchableOpacity style={styles.button} onPress={onPress}>
-            <Text style={styles.text}>{title}</Text>
+        <TouchableOpacity
+            style={buttonStyles}
+            onPress={onPress}
+            disabled={isDisabled}
+        >
+            <Text style={textStyles}>{title}</Text>
         </TouchableOpacity>
     );
 };

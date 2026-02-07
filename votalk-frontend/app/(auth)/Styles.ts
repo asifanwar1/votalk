@@ -1,9 +1,8 @@
 import { StyleSheet } from "react-native";
 import { useTheme } from "../../hooks/useTheme";
 
-const { colors } = useTheme();
-
 export const useLoginStyles = () => {
+    const { colors } = useTheme();
     return StyleSheet.create({
         headerGradient: {
             backgroundColor: colors.primary,
@@ -35,8 +34,8 @@ export const useLoginStyles = () => {
         },
         formSection: {
             flex: 1,
-            paddingHorizontal: 32,
-            marginTop: -24,
+            paddingHorizontal: 20,
+            marginTop: -30,
             paddingBottom: 32,
         },
         formContainer: {
@@ -47,11 +46,11 @@ export const useLoginStyles = () => {
             shadowRadius: 12,
             shadowOffset: { width: 0, height: 4 },
             elevation: 4,
-            padding: 32,
+            padding: 20,
             marginBottom: 16,
         },
         signInTitle: {
-            fontSize: 24,
+            fontSize: 20,
             fontWeight: "bold",
             color: colors.textPrimary,
             marginBottom: 24,
@@ -107,7 +106,7 @@ export const useLoginStyles = () => {
             elevation: 2,
         },
         signInButtonText: {
-            color: colors.textPrimary,
+            color: colors.background,
             fontWeight: "600",
             fontSize: 16,
         },
@@ -160,7 +159,7 @@ export const useLoginStyles = () => {
             flexDirection: "row",
             justifyContent: "space-between",
             marginTop: 24,
-            marginBottom: 32,
+            marginBottom: 10,
         },
         featureItem: {
             alignItems: "center",
@@ -180,10 +179,20 @@ export const useLoginStyles = () => {
             fontWeight: "500",
             textAlign: "center",
         },
+        signUpButton: { alignItems: "center" },
+        signupRow: {
+            flexDirection: "row",
+            gap: 4,
+            alignSelf: "center",
+            marginBottom: 0,
+            paddingBottom: 10,
+        },
     });
 };
 
 export const useRegisterStyles = () => {
+    const { colors } = useTheme();
+
     return StyleSheet.create({
         headerGradient: {
             backgroundColor: colors.primary,
@@ -215,8 +224,8 @@ export const useRegisterStyles = () => {
         },
         formSection: {
             flex: 1,
-            paddingHorizontal: 32,
-            marginTop: -24,
+            paddingHorizontal: 20,
+            marginTop: -30,
         },
         formContainer: {
             backgroundColor: colors.background,
@@ -226,11 +235,11 @@ export const useRegisterStyles = () => {
             shadowRadius: 12,
             shadowOffset: { width: 0, height: 4 },
             elevation: 4,
-            padding: 32,
+            padding: 20,
             marginBottom: 16,
         },
         signUpTitle: {
-            fontSize: 24,
+            fontSize: 20,
             fontWeight: "bold",
             color: colors.textPrimary,
             marginBottom: 24,
@@ -395,10 +404,19 @@ export const useRegisterStyles = () => {
             backgroundColor: colors.border,
             marginHorizontal: 8,
         },
+        account: {
+            alignItems: "center",
+            flexDirection: "row",
+            gap: 2,
+            alignSelf: "center",
+        },
+        signInButton: { alignItems: "center" },
     });
 };
 
 export const useWelcomeStyles = () => {
+    const { colors } = useTheme();
+
     return StyleSheet.create({
         container: {
             flex: 1,
@@ -427,6 +445,7 @@ export const useWelcomeStyles = () => {
             paddingHorizontal: 32,
             alignItems: "center",
             marginBottom: 12,
+            width: "100%",
         },
         buttonText: {
             color: colors.background,
@@ -440,6 +459,336 @@ export const useWelcomeStyles = () => {
         },
         outlineButtonText: {
             color: colors.primary,
+        },
+    });
+};
+
+export const useForgotPasswordStyles = () => {
+    const { colors } = useTheme();
+    return StyleSheet.create({
+        headerGradient: {
+            backgroundColor: colors.primary,
+            borderBottomLeftRadius: 48,
+            borderBottomRightRadius: 48,
+            padding: 32,
+            paddingBottom: 48,
+        },
+        headerIcon: {
+            width: 80,
+            height: 80,
+            backgroundColor: "rgba(255,255,255,0.2)",
+            borderRadius: 24,
+            alignItems: "center",
+            justifyContent: "center",
+            marginBottom: 16,
+        },
+        headerTitle: {
+            color: colors.background,
+            fontSize: 32,
+            fontWeight: "bold",
+            marginBottom: 8,
+            textAlign: "center",
+        },
+        headerSubtitle: {
+            color: "rgba(255,255,255,0.9)",
+            fontSize: 16,
+            textAlign: "center",
+        },
+        formSection: {
+            flex: 1,
+            paddingHorizontal: 20,
+            marginTop: -24,
+            paddingBottom: 32,
+        },
+        formContainer: {
+            backgroundColor: colors.background,
+            borderRadius: 24,
+            shadowColor: "#000",
+            shadowOpacity: 0.08,
+            shadowRadius: 12,
+            shadowOffset: { width: 0, height: 4 },
+            elevation: 4,
+            padding: 20,
+            marginBottom: 16,
+        },
+        label: {
+            fontSize: 14,
+            fontWeight: "500",
+            color: colors.textSecondary,
+            marginBottom: 8,
+        },
+        inputWrapper: {
+            flexDirection: "row",
+            alignItems: "center",
+            backgroundColor: colors.inputBackground,
+            borderRadius: 16,
+            borderWidth: 1,
+            borderColor: colors.border,
+            paddingHorizontal: 12,
+            paddingVertical: 4,
+            position: "relative",
+            marginBottom: 24,
+        },
+        inputIcon: {
+            marginRight: 8,
+        },
+        input: {
+            flex: 1,
+            paddingVertical: 12,
+            fontSize: 16,
+            color: colors.textPrimary,
+        },
+        resetButton: {
+            backgroundColor: colors.primary,
+            borderRadius: 16,
+            paddingVertical: 16,
+            alignItems: "center",
+            marginBottom: 8,
+        },
+        resetButtonText: {
+            color: colors.background,
+            fontWeight: "600",
+            fontSize: 16,
+        },
+        successText: {
+            color: colors.primary,
+            fontSize: 16,
+            textAlign: "center",
+            marginVertical: 24,
+            fontWeight: "500",
+        },
+        backToLoginText: {
+            color: colors.secondary,
+            fontSize: 15,
+            fontWeight: "500",
+        },
+        backToLoginBtn: { alignItems: "center", marginTop: 16 },
+        title: {
+            fontSize: 20,
+            fontWeight: "bold",
+            color: colors.textPrimary,
+            marginBottom: 24,
+        },
+    });
+};
+
+export const useOtpStyles = () => {
+    const { colors } = useTheme();
+    return StyleSheet.create({
+        headerGradient: {
+            backgroundColor: colors.primary,
+            borderBottomLeftRadius: 48,
+            borderBottomRightRadius: 48,
+            padding: 32,
+            paddingBottom: 48,
+        },
+        headerIcon: {
+            width: 80,
+            height: 80,
+            backgroundColor: "rgba(255,255,255,0.2)",
+            borderRadius: 24,
+            alignItems: "center",
+            justifyContent: "center",
+            marginBottom: 16,
+        },
+        headerTitle: {
+            color: colors.background,
+            fontSize: 32,
+            fontWeight: "bold",
+            marginBottom: 8,
+            textAlign: "center",
+        },
+        headerSubtitle: {
+            color: "rgba(255,255,255,0.9)",
+            fontSize: 16,
+            textAlign: "center",
+        },
+        formSection: {
+            flex: 1,
+            paddingHorizontal: 20,
+            marginTop: -24,
+            paddingBottom: 32,
+        },
+        formContainer: {
+            backgroundColor: colors.background,
+            borderRadius: 24,
+            shadowColor: "#000",
+            shadowOpacity: 0.08,
+            shadowRadius: 12,
+            shadowOffset: { width: 0, height: 4 },
+            elevation: 4,
+            padding: 20,
+            marginBottom: 16,
+        },
+        otpRow: {
+            flexDirection: "row",
+            justifyContent: "space-between",
+            marginBottom: 24,
+        },
+        otpInput: {
+            width: 56,
+            height: 56,
+            borderRadius: 12,
+            borderWidth: 1,
+            borderColor: colors.border,
+            backgroundColor: colors.inputBackground,
+            textAlign: "center",
+            fontSize: 24,
+            color: colors.textPrimary,
+        },
+        verifyButton: {
+            backgroundColor: colors.primary,
+            borderRadius: 16,
+            paddingVertical: 16,
+            alignItems: "center",
+            marginBottom: 8,
+        },
+        verifyButtonText: {
+            color: colors.background,
+            fontWeight: "600",
+            fontSize: 16,
+        },
+        resendText: {
+            color: colors.secondary,
+            fontSize: 15,
+            fontWeight: "500",
+        },
+        successText: {
+            color: colors.primary,
+            fontSize: 16,
+            textAlign: "center",
+            marginVertical: 24,
+            fontWeight: "500",
+        },
+        backToLoginText: {
+            color: colors.secondary,
+            fontSize: 15,
+            fontWeight: "500",
+        },
+        resendBtn: {
+            alignItems: "center",
+            marginTop: 16,
+        },
+        title: {
+            fontSize: 20,
+            fontWeight: "bold",
+            color: colors.textPrimary,
+            marginBottom: 24,
+        },
+    });
+};
+
+export const useChangePasswordStyles = () => {
+    const { colors } = useTheme();
+    return StyleSheet.create({
+        headerGradient: {
+            backgroundColor: colors.primary,
+            borderBottomLeftRadius: 48,
+            borderBottomRightRadius: 48,
+            padding: 32,
+            paddingBottom: 48,
+        },
+        headerIcon: {
+            width: 80,
+            height: 80,
+            backgroundColor: "rgba(255,255,255,0.2)",
+            borderRadius: 24,
+            alignItems: "center",
+            justifyContent: "center",
+            marginBottom: 16,
+        },
+        headerTitle: {
+            color: colors.background,
+            fontSize: 32,
+            fontWeight: "bold",
+            marginBottom: 8,
+            textAlign: "center",
+        },
+        headerSubtitle: {
+            color: "rgba(255,255,255,0.9)",
+            fontSize: 16,
+            textAlign: "center",
+        },
+        formSection: {
+            flex: 1,
+            paddingHorizontal: 20,
+            marginTop: -24,
+            paddingBottom: 32,
+        },
+        formContainer: {
+            backgroundColor: colors.background,
+            borderRadius: 24,
+            shadowColor: "#000",
+            shadowOpacity: 0.08,
+            shadowRadius: 12,
+            shadowOffset: { width: 0, height: 4 },
+            elevation: 4,
+            padding: 20,
+            marginBottom: 16,
+        },
+        label: {
+            fontSize: 14,
+            fontWeight: "500",
+            color: colors.textSecondary,
+            marginBottom: 8,
+        },
+        inputWrapper: {
+            flexDirection: "row",
+            alignItems: "center",
+            backgroundColor: colors.inputBackground,
+            borderRadius: 16,
+            borderWidth: 1,
+            borderColor: colors.border,
+            paddingHorizontal: 12,
+            paddingVertical: 4,
+            position: "relative",
+            marginBottom: 16,
+        },
+        inputIcon: {
+            marginRight: 8,
+        },
+        input: {
+            flex: 1,
+            paddingVertical: 12,
+            fontSize: 16,
+            color: colors.textPrimary,
+        },
+        eyeButton: {
+            position: "absolute",
+            right: 12,
+            top: "50%",
+            marginTop: -10,
+            padding: 4,
+        },
+        resetButton: {
+            backgroundColor: colors.primary,
+            borderRadius: 16,
+            paddingVertical: 16,
+            alignItems: "center",
+            marginTop: 16,
+        },
+        resetButtonText: {
+            color: colors.background,
+            fontWeight: "600",
+            fontSize: 16,
+        },
+        successText: {
+            color: colors.primary,
+            fontSize: 16,
+            textAlign: "center",
+            marginVertical: 24,
+            fontWeight: "500",
+        },
+        backToLoginText: {
+            color: colors.secondary,
+            fontSize: 15,
+            fontWeight: "500",
+        },
+        title: {
+            fontSize: 20,
+            fontWeight: "bold",
+            color: colors.textPrimary,
+            marginBottom: 24,
         },
     });
 };

@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import {
     StyleSheet,
     Text,
@@ -6,7 +7,6 @@ import {
     TouchableOpacity,
     ScrollView,
 } from "react-native";
-import React, { useState } from "react";
 import {
     MessageCircle,
     Mail,
@@ -16,6 +16,8 @@ import {
     User,
 } from "lucide-react-native";
 import { useRegisterStyles } from "./Styles";
+import { useRouter } from "expo-router";
+import { Button } from "../../components/Button/Button";
 
 const Register = () => {
     const [formData, setFormData] = useState({
@@ -27,11 +29,11 @@ const Register = () => {
     const [showPassword, setShowPassword] = useState(false);
 
     const styles = useRegisterStyles();
+    const router = useRouter();
 
     return (
         <View style={{ flex: 1 }}>
             <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-                {/* Header Section with Gradient */}
                 <View style={styles.headerGradient}>
                     <View style={{ alignItems: "center" }}>
                         <View style={styles.headerIcon}>
@@ -44,12 +46,10 @@ const Register = () => {
                     </View>
                 </View>
 
-                {/* Form Section */}
                 <View style={styles.formSection}>
                     <View style={styles.formContainer}>
                         <Text style={styles.signUpTitle}>Create Account</Text>
 
-                        {/* Name Input */}
                         <View style={{ marginBottom: 16 }}>
                             <Text style={styles.label}>Full Name</Text>
                             <View style={styles.inputWrapper}>
@@ -66,7 +66,6 @@ const Register = () => {
                             </View>
                         </View>
 
-                        {/* Email Input */}
                         <View style={{ marginBottom: 16 }}>
                             <Text style={styles.label}>Email</Text>
                             <View style={styles.inputWrapper}>
@@ -87,14 +86,13 @@ const Register = () => {
                             </View>
                         </View>
 
-                        {/* Password Input */}
                         <View style={{ marginBottom: 16 }}>
                             <Text style={styles.label}>Password</Text>
                             <View style={styles.inputWrapper}>
                                 <Lock size={20} style={styles.inputIcon} />
                                 <TextInput
                                     style={styles.input}
-                                    placeholder="Create a strong password"
+                                    placeholder="Enter password"
                                     value={formData.password}
                                     onChangeText={(text) =>
                                         setFormData({
@@ -123,7 +121,6 @@ const Register = () => {
                             </Text>
                         </View>
 
-                        {/* Confirm Password Input */}
                         <View style={{ marginBottom: 24 }}>
                             <Text style={styles.label}>Confirm Password</Text>
                             <View style={styles.inputWrapper}>
@@ -144,15 +141,10 @@ const Register = () => {
                             </View>
                         </View>
 
-                        {/* Terms Checkbox */}
                         <View style={styles.checkboxRow}>
                             <TouchableOpacity
-                                style={
-                                    styles.checkbox
-                                } /* implement checked state as needed */
-                            >
-                                {/* You can use a custom checkbox or a library */}
-                            </TouchableOpacity>
+                                style={styles.checkbox}
+                            ></TouchableOpacity>
                             <Text style={styles.termsText}>
                                 I agree to the{" "}
                                 <Text style={styles.link}>
@@ -163,14 +155,13 @@ const Register = () => {
                             </Text>
                         </View>
 
-                        {/* Sign Up Button */}
-                        <TouchableOpacity style={styles.signUpButton}>
-                            <Text style={styles.signUpButtonText}>
-                                Create Account
-                            </Text>
-                        </TouchableOpacity>
+                        <Button
+                            title="Create Account"
+                            onPress={() => ({})}
+                            buttonStyles={styles.signUpButton}
+                            textStyles={styles.signUpButtonText}
+                        />
 
-                        {/* Divider */}
                         <View style={styles.dividerContainer}>
                             <View style={styles.dividerLine} />
                             <Text style={styles.dividerText}>
@@ -179,30 +170,35 @@ const Register = () => {
                             <View style={styles.dividerLine} />
                         </View>
 
-                        {/* Social Login */}
                         <View style={styles.socialRow}>
-                            <TouchableOpacity style={styles.socialButton}>
-                                <Text style={styles.socialButtonText}>
-                                    Google
-                                </Text>
-                            </TouchableOpacity>
-                            <TouchableOpacity style={styles.socialButton}>
-                                <Text style={styles.socialButtonText}>
-                                    Facebook
-                                </Text>
-                            </TouchableOpacity>
+                            <Button
+                                title="Google"
+                                onPress={() => ({})}
+                                buttonStyles={styles.socialButton}
+                                textStyles={styles.socialButtonText}
+                            />
+                            <Button
+                                title="Facebook"
+                                onPress={() => ({})}
+                                buttonStyles={styles.socialButton}
+                                textStyles={styles.socialButtonText}
+                            />
                         </View>
 
-                        {/* Sign In Link */}
-                        <View style={{ alignItems: "center" }}>
+                        <View style={styles.account}>
                             <Text style={styles.signinText}>
                                 Already have an account?{" "}
-                                <Text style={styles.signinLink}>Sign In</Text>
                             </Text>
+
+                            <Button
+                                title="Sign In"
+                                onPress={() => router.push("/(auth)/Login")}
+                                buttonStyles={styles.signInButton}
+                                textStyles={styles.signinLink}
+                            />
                         </View>
                     </View>
 
-                    {/* Trust Indicators */}
                     <View style={styles.trustContainer}>
                         <View style={styles.trustRow}>
                             <View style={styles.trustItem}>

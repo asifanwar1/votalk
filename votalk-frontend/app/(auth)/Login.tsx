@@ -12,7 +12,7 @@ import {
 import { useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
-    MessageCircle,
+    BotMessageSquare,
     Mail,
     Lock,
     Eye,
@@ -22,6 +22,7 @@ import {
     Award,
 } from "lucide-react-native";
 import { useLoginStyles } from "./Styles";
+import { Button } from "../../components/Button/Button";
 
 const Login = () => {
     const [formData, setFormData] = useState({
@@ -47,11 +48,10 @@ const Login = () => {
                     keyboardShouldPersistTaps="handled"
                 >
                     <View style={{ flex: 1 }}>
-                        {/* Header Section with Gradient */}
                         <View style={styles.headerGradient}>
                             <View style={{ alignItems: "center" }}>
                                 <View style={styles.headerIcon}>
-                                    <MessageCircle size={40} color="#fff" />
+                                    <BotMessageSquare size={40} color="#fff" />
                                 </View>
                                 <Text style={styles.headerTitle}>Votalk</Text>
                                 <Text style={styles.headerSubtitle}>
@@ -60,12 +60,9 @@ const Login = () => {
                             </View>
                         </View>
 
-                        {/* Form Section */}
                         <View style={styles.formSection}>
                             <View style={styles.formContainer}>
                                 <Text style={styles.signInTitle}>Sign In</Text>
-                                {/* ...inputs and buttons... */}
-                                {/* Email Input */}
                                 <View style={{ marginBottom: 16 }}>
                                     <Text style={styles.label}>Email</Text>
                                     <View style={styles.inputWrapper}>
@@ -88,7 +85,6 @@ const Login = () => {
                                         />
                                     </View>
                                 </View>
-                                {/* Password Input */}
                                 <View style={{ marginBottom: 24 }}>
                                     <Text style={styles.label}>Password</Text>
                                     <View style={styles.inputWrapper}>
@@ -126,26 +122,31 @@ const Login = () => {
                                         </TouchableOpacity>
                                     </View>
                                 </View>
-                                {/* Forgot Password */}
                                 <View
                                     style={{
                                         alignItems: "flex-end",
                                         marginBottom: 24,
                                     }}
                                 >
-                                    <TouchableOpacity>
-                                        <Text style={styles.forgotPassword}>
-                                            Forgot Password?
-                                        </Text>
-                                    </TouchableOpacity>
+                                    <Button
+                                        title="Forgot Password?"
+                                        onPress={() =>
+                                            router.push(
+                                                "/(auth)/ForgotPassword",
+                                            )
+                                        }
+                                        textStyles={styles.forgotPassword}
+                                    />
                                 </View>
-                                {/* Sign In Button */}
-                                <TouchableOpacity style={styles.signInButton}>
-                                    <Text style={styles.signInButtonText}>
-                                        Sign In
-                                    </Text>
-                                </TouchableOpacity>
-                                {/* Divider */}
+
+                                <Button
+                                    title="Sign In"
+                                    onPress={() =>
+                                        router.push("/(main)/(tabs)/Home")
+                                    }
+                                    buttonStyles={styles.signInButton}
+                                    textStyles={styles.signInButtonText}
+                                />
                                 <View style={styles.dividerContainer}>
                                     <View style={styles.dividerLine} />
                                     <Text style={styles.dividerText}>
@@ -153,7 +154,6 @@ const Login = () => {
                                     </Text>
                                     <View style={styles.dividerLine} />
                                 </View>
-                                {/* Social Login */}
                                 <View style={styles.socialRow}>
                                     <TouchableOpacity
                                         style={styles.socialButton}
@@ -170,30 +170,20 @@ const Login = () => {
                                         </Text>
                                     </TouchableOpacity>
                                 </View>
-                                {/* Sign Up Link */}
-                                <View
-                                    style={{
-                                        alignItems: "center",
-                                        marginBottom: 0,
-                                        paddingBottom: 32,
-                                    }}
-                                >
+                                <View style={styles.signupRow}>
                                     <Text style={styles.signupText}>
                                         Don't have an account?
                                     </Text>
-                                    <TouchableOpacity
+                                    <Button
+                                        title="Sign Up"
                                         onPress={() =>
                                             router.push("/(auth)/Register")
                                         }
-                                        style={{ alignItems: "center" }}
-                                    >
-                                        <Text style={styles.signupLink}>
-                                            Sign Up
-                                        </Text>
-                                    </TouchableOpacity>
+                                        buttonStyles={styles.signUpButton}
+                                        textStyles={styles.signupLink}
+                                    />
                                 </View>
                             </View>
-                            {/* Features Preview */}
                             <View style={styles.featuresRow}>
                                 <View style={styles.featureItem}>
                                     <View

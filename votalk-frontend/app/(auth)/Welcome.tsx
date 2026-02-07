@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { useRouter } from "expo-router";
 import { useWelcomeStyles } from "./Styles";
+import { BotMessageSquare } from "lucide-react-native";
 
 export default function Welcome() {
     const styles = useWelcomeStyles();
@@ -9,6 +10,8 @@ export default function Welcome() {
 
     return (
         <View style={styles.container}>
+            <BotMessageSquare size={80} color="#8b5cf6" />
+
             <Text style={styles.title}>Welcome to Votalk</Text>
             <Text style={styles.subtitle}>
                 Join a community that offers a safe space, a strong voice, and a
