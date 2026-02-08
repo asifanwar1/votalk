@@ -1,45 +1,52 @@
 import React, { useState } from "react";
+import { Text, View, ScrollView, TouchableOpacity } from "react-native";
 import {
-    StyleSheet,
-    Text,
-    View,
-    ScrollView,
-    TouchableOpacity,
-} from "react-native";
-import { Trophy, Mic, ChevronRight, TrendingUp } from "lucide-react-native";
+    BotMessageSquare,
+    Mic,
+    ChevronRight,
+    TrendingUp,
+    Plane,
+    Briefcase,
+    ShoppingCart,
+    MessageSquareText,
+} from "lucide-react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { useHomeStyles } from "./Styles";
+import { useTheme } from "../../../hooks/useTheme";
 
 export default function Home() {
     const [activeTab, setActiveTab] = useState("home");
     const [isRecording, setIsRecording] = useState(false);
+    const styles = useHomeStyles();
+    const { colors } = useTheme();
 
     const conversationModes = [
         {
             id: 1,
-            icon: "✈️",
+            icon: <Plane size={32} color="#fff" />,
             title: "Travel",
-            colors: ["#60a5fa", "#22d3ee"] as [string, string],
+            color: colors.modeTravel,
             desc: "Airport, Hotel, Directions",
         },
         {
             id: 2,
-            icon: "💼",
+            icon: <Briefcase size={32} color="#fff" />,
             title: "Work",
-            colors: ["#c084fc", "#f472b6"] as [string, string],
+            color: colors.modeWork,
             desc: "Meetings, Emails, Interviews",
         },
         {
             id: 3,
-            icon: "🛍️",
+            icon: <ShoppingCart size={32} color="#fff" />,
             title: "Shopping",
-            colors: ["#fb923c", "#ef4444"] as [string, string],
+            color: colors.modeShopping,
             desc: "Markets, Restaurants, Stores",
         },
         {
             id: 4,
-            icon: "💬",
+            icon: <MessageSquareText size={32} color="#fff" />,
             title: "Daily Life",
-            colors: ["#4ade80", "#10b981"] as [string, string],
+            color: colors.modeDaily,
             desc: "Casual Conversations",
         },
     ];
@@ -72,9 +79,8 @@ export default function Home() {
                 contentContainerStyle={styles.scrollContent}
                 showsVerticalScrollIndicator={false}
             >
-                {/* Header */}
                 <LinearGradient
-                    colors={["#6366f1", "#9333ea", "#ec4899"]}
+                    colors={[colors.headerGradient1, colors.headerGradient2]}
                     start={{ x: 0, y: 0 }}
                     end={{ x: 1, y: 1 }}
                     style={styles.header}
@@ -87,7 +93,7 @@ export default function Home() {
                             </Text>
                         </View>
                         <View style={styles.trophyContainer}>
-                            <Trophy size={24} color="#fff" />
+                            <BotMessageSquare size={24} color="#fff" />
                         </View>
                     </View>
 
@@ -113,7 +119,6 @@ export default function Home() {
                     </View>
                 </LinearGradient>
 
-                {/* Quick Start */}
                 <View style={styles.section}>
                     <Text style={styles.sectionTitle}>Quick Start</Text>
                     <TouchableOpacity
@@ -121,7 +126,10 @@ export default function Home() {
                         activeOpacity={0.8}
                     >
                         <LinearGradient
-                            colors={["#6366f1", "#9333ea"]}
+                            colors={[
+                                colors.headerGradient1,
+                                colors.headerGradient2,
+                            ]}
                             start={{ x: 0, y: 0 }}
                             end={{ x: 1, y: 0 }}
                             style={styles.quickStartButton}
@@ -146,7 +154,6 @@ export default function Home() {
                     </TouchableOpacity>
                 </View>
 
-                {/* Conversation Modes */}
                 <View style={styles.section}>
                     <Text style={styles.sectionTitle}>Choose Your Scene</Text>
                     <View style={styles.modesGrid}>
@@ -157,11 +164,11 @@ export default function Home() {
                                 activeOpacity={0.8}
                                 style={styles.modeButtonWrapper}
                             >
-                                <LinearGradient
-                                    colors={mode.colors}
-                                    start={{ x: 0, y: 0 }}
-                                    end={{ x: 1, y: 1 }}
-                                    style={styles.modeButton}
+                                <View
+                                    style={[
+                                        styles.modeButton,
+                                        { backgroundColor: mode.color },
+                                    ]}
                                 >
                                     <Text style={styles.modeIcon}>
                                         {mode.icon}
@@ -172,13 +179,12 @@ export default function Home() {
                                     <Text style={styles.modeDesc}>
                                         {mode.desc}
                                     </Text>
-                                </LinearGradient>
+                                </View>
                             </TouchableOpacity>
                         ))}
                     </View>
                 </View>
 
-                {/* Recent Progress */}
                 <View style={styles.section}>
                     <Text style={styles.sectionTitle}>Recent Sessions</Text>
                     <View style={styles.sessionsList}>
@@ -202,7 +208,7 @@ export default function Home() {
                                         >
                                             <TrendingUp
                                                 size={12}
-                                                color="#16a34a"
+                                                color={colors.improvement}
                                             />
                                             <Text
                                                 style={styles.improvementText}
@@ -220,203 +226,3 @@ export default function Home() {
         </View>
     );
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: "#fff",
-    },
-    scrollView: {
-        flex: 1,
-    },
-    scrollContent: {
-        paddingBottom: 96,
-    },
-    header: {
-        borderBottomLeftRadius: 24,
-        borderBottomRightRadius: 24,
-        paddingHorizontal: 24,
-        paddingTop: 60,
-        paddingBottom: 32,
-    },
-    headerTop: {
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
-        marginBottom: 24,
-    },
-    headerTitle: {
-        color: "#fff",
-        fontSize: 28,
-        fontWeight: "bold",
-    },
-    headerSubtitle: {
-        color: "rgba(255, 255, 255, 0.8)",
-        fontSize: 14,
-    },
-    trophyContainer: {
-        width: 48,
-        height: 48,
-        backgroundColor: "rgba(255, 255, 255, 0.2)",
-        borderRadius: 24,
-        alignItems: "center",
-        justifyContent: "center",
-    },
-    statsCard: {
-        backgroundColor: "rgba(255, 255, 255, 0.1)",
-        borderRadius: 16,
-        padding: 16,
-        borderWidth: 1,
-        borderColor: "rgba(255, 255, 255, 0.2)",
-    },
-    statsRow: {
-        flexDirection: "row",
-        justifyContent: "space-around",
-    },
-    statItem: {
-        alignItems: "center",
-        flex: 1,
-    },
-    statItemBorder: {
-        borderLeftWidth: 1,
-        borderRightWidth: 1,
-        borderColor: "rgba(255, 255, 255, 0.2)",
-    },
-    statValue: {
-        color: "#fff",
-        fontSize: 24,
-        fontWeight: "bold",
-    },
-    statLabel: {
-        color: "rgba(255, 255, 255, 0.7)",
-        fontSize: 12,
-    },
-    section: {
-        paddingHorizontal: 24,
-        marginTop: 24,
-    },
-    sectionTitle: {
-        fontSize: 20,
-        fontWeight: "bold",
-        color: "#1f2937",
-        marginBottom: 16,
-    },
-    quickStartButton: {
-        borderRadius: 16,
-        padding: 24,
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.1,
-        shadowRadius: 8,
-        elevation: 4,
-    },
-    quickStartContent: {
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
-    },
-    quickStartLeft: {
-        flexDirection: "row",
-        alignItems: "center",
-        gap: 12,
-    },
-    micContainer: {
-        width: 48,
-        height: 48,
-        backgroundColor: "rgba(255, 255, 255, 0.2)",
-        borderRadius: 24,
-        alignItems: "center",
-        justifyContent: "center",
-    },
-    quickStartTitle: {
-        color: "#fff",
-        fontSize: 18,
-        fontWeight: "600",
-    },
-    quickStartSubtitle: {
-        color: "rgba(255, 255, 255, 0.8)",
-        fontSize: 14,
-    },
-    modesGrid: {
-        flexDirection: "row",
-        flexWrap: "wrap",
-        gap: 12,
-    },
-    modeButtonWrapper: {
-        width: "48%",
-    },
-    modeButton: {
-        borderRadius: 16,
-        padding: 16,
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.1,
-        shadowRadius: 4,
-        elevation: 3,
-    },
-    modeIcon: {
-        fontSize: 32,
-        marginBottom: 8,
-    },
-    modeTitle: {
-        color: "#fff",
-        fontSize: 18,
-        fontWeight: "600",
-        marginBottom: 4,
-    },
-    modeDesc: {
-        color: "rgba(255, 255, 255, 0.8)",
-        fontSize: 12,
-    },
-    sessionsList: {
-        gap: 12,
-    },
-    sessionCard: {
-        backgroundColor: "#fff",
-        borderRadius: 12,
-        padding: 16,
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 1 },
-        shadowOpacity: 0.05,
-        shadowRadius: 2,
-        elevation: 1,
-        borderWidth: 1,
-        borderColor: "#f3f4f6",
-    },
-    sessionContent: {
-        flexDirection: "row",
-        alignItems: "center",
-        justifyContent: "space-between",
-    },
-    sessionLeft: {
-        flex: 1,
-    },
-    sessionTopic: {
-        fontSize: 16,
-        fontWeight: "600",
-        color: "#1f2937",
-    },
-    sessionTime: {
-        fontSize: 14,
-        color: "#6b7280",
-        marginTop: 2,
-    },
-    sessionRight: {
-        alignItems: "flex-end",
-    },
-    sessionScore: {
-        fontSize: 24,
-        fontWeight: "bold",
-        color: "#6366f1",
-    },
-    improvementContainer: {
-        flexDirection: "row",
-        alignItems: "center",
-        gap: 4,
-        marginTop: 2,
-    },
-    improvementText: {
-        fontSize: 12,
-        color: "#16a34a",
-    },
-});

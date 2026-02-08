@@ -8,6 +8,17 @@ export const LightColors = {
     border: "#e5e7eb",
     danger: "#ef4444",
     inputBackground: "#f1f5f9",
+    card: "#ffffff",
+    accent: "#9333ea",
+    info: "#38bdf8",
+    success: "#22c55e",
+    headerGradient1: "#8b5cf6",
+    headerGradient2: "#8b5cf6",
+    modeTravel: "#60a5fa",
+    modeWork: "#f8626e",
+    modeShopping: "#fb923c",
+    modeDaily: "#10b981",
+    improvement: "#16a34a",
 };
 
 export const DarkColors = {
@@ -20,4 +31,15 @@ export const DarkColors = {
     border: "#e5e7eb",
     danger: "#ef4444",
     inputBackground: "#f1f5f9",
+    card: "#ffffff",
+    accent: "#9333ea",
+    info: "#38bdf8",
+    success: "#22c55e",
+    headerGradient1: "#8b5cf6",
+    headerGradient2: "#8b5cf6",
+    modeTravel: "#60a5fa",
+    modeWork: "#f8626e",
+    modeShopping: "#fb923c",
+    modeDaily: "#10b981",
+    improvement: "#16a34a",
 };

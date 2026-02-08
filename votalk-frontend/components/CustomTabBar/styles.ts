@@ -7,11 +7,11 @@ export const createStyles = (colors: any) =>
             justifyContent: "space-between",
             alignItems: "center",
             paddingHorizontal: 16,
-            paddingVertical: Platform.OS === "ios" ? 24 : 12,
+            paddingVertical: Platform.OS === "ios" ? 24 : 10,
             backgroundColor: "#fff",
             borderTopWidth: 1,
             borderTopColor: "#e5e7eb",
-            height: 72,
+            height: 92,
         },
         tab: {
             flex: 1,
@@ -24,7 +24,7 @@ export const createStyles = (colors: any) =>
             marginTop: 4,
         },
         labelFocused: {
-            color: "#6366f1",
+            color: colors.primary,
             fontWeight: "bold",
         },
         centerTabWrapper: {
@@ -37,8 +37,7 @@ export const createStyles = (colors: any) =>
             width: 64,
             height: 64,
             borderRadius: 32,
-            backgroundColor:
-                "linear-gradient(135deg, #8b5cf6 0%, #6366f1 100%)",
+            backgroundColor: colors.primary,
             alignItems: "center",
             justifyContent: "center",
             shadowColor: "#6366f1",

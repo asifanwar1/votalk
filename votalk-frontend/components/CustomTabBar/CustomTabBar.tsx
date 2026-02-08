@@ -7,6 +7,7 @@ import type {
     ParamListBase,
 } from "@react-navigation/native";
 import type { Route, TabNavigationState } from "@react-navigation/native";
+import type { EdgeInsets } from "react-native-safe-area-context";
 
 type TabBarProps = {
     state: TabNavigationState<ParamListBase>;
@@ -14,6 +15,7 @@ type TabBarProps = {
     icons: Array<React.ComponentType<{ size: number; color: string }>>;
     labels: string[];
     centerIcon: React.ComponentType<{ size: number; color: string }>;
+    insets: EdgeInsets;
 };
 
 const CustomTabBar = ({
@@ -22,11 +24,12 @@ const CustomTabBar = ({
     labels,
     navigation,
     centerIcon: CenterIcon,
+    insets,
 }: TabBarProps) => {
     const { colors } = useTheme();
     const styles = createStyles(colors);
     return (
-        <View style={styles.tabBar}>
+        <View style={[styles.tabBar, { paddingBottom: insets.bottom }]}>
             {state.routes.map((route: Route<string>, idx: number) => {
                 if (idx === 2) {
                     return (
@@ -54,7 +57,7 @@ const CustomTabBar = ({
                     >
                         <Icon
                             size={24}
-                            color={isFocused ? "#6366f1" : "#64748b"}
+                            color={isFocused ? colors.primary : "#64748b"}
                         />
                         <Text
                             style={[

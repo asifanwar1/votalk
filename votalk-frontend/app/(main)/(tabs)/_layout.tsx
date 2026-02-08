@@ -26,6 +26,7 @@ export default function TabsLayout() {
                     icons={ICONS}
                     labels={LABELS}
                     centerIcon={Mic}
+                    insets={props.insets}
                 />
             )}
             screenOptions={{

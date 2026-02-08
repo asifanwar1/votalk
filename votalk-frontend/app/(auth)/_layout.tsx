@@ -15,6 +15,9 @@ const AuthLayout = () => {
                 <Stack.Screen name={AUTH_ROUTES.WELCOME} />
                 <Stack.Screen name={AUTH_ROUTES.LOGIN} />
                 <Stack.Screen name={AUTH_ROUTES.REGISTER} />
+                <Stack.Screen name={AUTH_ROUTES.FORGOT_PASSWORD} />
+                <Stack.Screen name={AUTH_ROUTES.VERIFY_OTP} />
+                <Stack.Screen name={AUTH_ROUTES.RESET_PASSWORD} />
             </Stack>
         </>
     );
