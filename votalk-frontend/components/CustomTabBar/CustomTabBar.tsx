@@ -1,17 +1,16 @@
 import React from "react";
-import {
-    View,
-    TouchableOpacity,
-    Text,
-    StyleSheet,
-    Platform,
-} from "react-native";
+import { View, TouchableOpacity, Text } from "react-native";
 import { useTheme } from "../../hooks/useTheme";
 import { createStyles } from "./styles";
+import type {
+    NavigationHelpers,
+    ParamListBase,
+} from "@react-navigation/native";
+import type { Route, TabNavigationState } from "@react-navigation/native";
 
 type TabBarProps = {
-    state: any;
-    navigation: any;
+    state: TabNavigationState<ParamListBase>;
+    navigation: NavigationHelpers<ParamListBase>;
     icons: Array<React.ComponentType<{ size: number; color: string }>>;
     labels: string[];
     centerIcon: React.ComponentType<{ size: number; color: string }>;
@@ -28,7 +27,7 @@ const CustomTabBar = ({
     const styles = createStyles(colors);
     return (
         <View style={styles.tabBar}>
-            {state.routes.map((route: any, idx: number) => {
+            {state.routes.map((route: Route<string>, idx: number) => {
                 if (idx === 2) {
                     return (
                         <View key={route.key} style={styles.centerTabWrapper}>
