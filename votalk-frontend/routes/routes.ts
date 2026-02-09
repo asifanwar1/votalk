@@ -22,7 +22,7 @@ export enum TAB_ROUTES {
     HOME = "Home",
     LEARN = "Learn",
     PROGRESS = "Progress",
-    CHAT = "Chat",
+    SPEAK = "Speak",
     MORE = "More",
 }
 
@@ -45,7 +45,7 @@ export const ROUTE_PATHS = {
         HOME: `${TABS_BASE_PATH}/${TAB_ROUTES.HOME}`,
         LEARN: `${TABS_BASE_PATH}/${TAB_ROUTES.LEARN}`,
         PROGRESS: `${TABS_BASE_PATH}/${TAB_ROUTES.PROGRESS}`,
-        CHAT: `${TABS_BASE_PATH}/${TAB_ROUTES.CHAT}`,
+        SPEAK: `${TABS_BASE_PATH}/${TAB_ROUTES.SPEAK}`,
         MORE: `${TABS_BASE_PATH}/${TAB_ROUTES.MORE}`,
 
         // APP ROUTES
