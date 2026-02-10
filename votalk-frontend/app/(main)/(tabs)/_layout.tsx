@@ -17,21 +17,24 @@ const ICONS = [Home, Book, Mic, TrendingUp, MoreHorizontal];
 const LABELS = ["Home", "Learn", "Speak", "Progress", "More"];
 
 export default function TabsLayout() {
+    const pathname = usePathname();
+    const hideTabs = pathname?.endsWith("/Speak");
+
     return (
         <Tabs
-            tabBar={(props) => (
-                <CustomTabBar
-                    state={props.state}
-                    navigation={props.navigation}
-                    icons={ICONS}
-                    labels={LABELS}
-                    centerIcon={Mic}
-                    insets={props.insets}
-                />
-            )}
-            screenOptions={{
-                headerShown: false,
-            }}
+            tabBar={(props) =>
+                hideTabs ? null : (
+                    <CustomTabBar
+                        state={props.state}
+                        navigation={props.navigation}
+                        icons={ICONS}
+                        labels={LABELS}
+                        centerIcon={Mic}
+                        insets={props.insets}
+                    />
+                )
+            }
+            screenOptions={{ headerShown: false }}
         >
             {Object.keys(BOTTOM_TAB_OPTIONS).map((route) => (
                 <Tabs.Screen key={route} name={route} />

@@ -9,13 +9,13 @@ export enum AUTH_ROUTES {
 
 export enum APP_ROUTES {
     CONVERSATIONS = "Conversations",
+    PROFILE = "Profile",
+    BADGES = "Badges",
     NOTIFICATIONS = "Notifications",
-    SETTINGS = "Settings",
-    EDIT_PROFILE = "EditProfile",
-    CONTACT_US = "ContactUs",
-    USER_DETAILS = "UserDetails",
     ABOUT_US = "AboutUs",
     PRIVACY_POLICY = "PrivacyPolicy",
+    CONTACT_US = "ContactUs",
+    SETTINGS = "Settings",
 }
 
 export enum TAB_ROUTES {
@@ -49,13 +49,13 @@ export const ROUTE_PATHS = {
         MORE: `${TABS_BASE_PATH}/${TAB_ROUTES.MORE}`,
 
         // APP ROUTES
-        SETTINGS: `${APP_ROOT_PATH}/${APP_ROUTES.SETTINGS}`,
+        CONVERSATIONS: `${APP_ROOT_PATH}/${APP_ROUTES.CONVERSATIONS}`,
+        PROFILE: `${APP_ROOT_PATH}/${APP_ROUTES.PROFILE}`,
+        BADGES: `${APP_ROOT_PATH}/${APP_ROUTES.BADGES}`,
+        NOTIFICATIONS: `${APP_ROOT_PATH}/${APP_ROUTES.NOTIFICATIONS}`,
         ABOUT_US: `${APP_ROOT_PATH}/${APP_ROUTES.ABOUT_US}`,
         PRIVACY_POLICY: `${APP_ROOT_PATH}/${APP_ROUTES.PRIVACY_POLICY}`,
-        EDIT_PROFILE: `${APP_ROOT_PATH}/${APP_ROUTES.EDIT_PROFILE}`,
         CONTACT_US: `${APP_ROOT_PATH}/${APP_ROUTES.CONTACT_US}`,
-        NOTIFICATIONS: `${APP_ROOT_PATH}/${APP_ROUTES.NOTIFICATIONS}`,
-        CONVERSATIONS: `${APP_ROOT_PATH}/${APP_ROUTES.CONVERSATIONS}`,
-        USER_DETAILS: `${APP_ROOT_PATH}/${APP_ROUTES.USER_DETAILS}`,
+        SETTINGS: `${APP_ROOT_PATH}/${APP_ROUTES.SETTINGS}`,
     },
 } as const;

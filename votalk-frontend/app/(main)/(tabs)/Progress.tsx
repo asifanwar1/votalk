@@ -24,9 +24,7 @@ const Progress = () => {
                 >
                     <View style={styles.headerTop}>
                         <View style={styles.headerText}>
-                            <Text style={styles.headerTitle}>
-                                Progress & Achievements
-                            </Text>
+                            <Text style={styles.headerTitle}>Progress</Text>
                             <Text style={styles.headerSubtitle}>
                                 Track your progress and celebrate your
                                 achievements
@@ -135,6 +133,48 @@ const Progress = () => {
                                 </Text>
                                 <Text style={styles.statLabel}>
                                     Scenarios Done
+                                </Text>
+                            </View>
+                        </View>
+                    </View>
+
+                    <View style={styles.statsCard}>
+                        <Text style={styles.statsTitle}>Achievements</Text>
+                        <View style={styles.achievementsGrid}>
+                            <View style={styles.achievementCard}>
+                                <Trophy size={28} color={colors.primary} />
+                                <Text style={styles.achievementName}>
+                                    Streak Master
+                                </Text>
+                                <Text style={styles.achievementDesc}>
+                                    Completed 30 days in a row
+                                </Text>
+                            </View>
+                            <View style={styles.achievementCard}>
+                                <BookText size={28} color={colors.primary} />
+                                <Text style={styles.achievementName}>
+                                    Word Collector
+                                </Text>
+                                <Text style={styles.achievementDesc}>
+                                    Learned 500 new words
+                                </Text>
+                            </View>
+                            <View style={styles.achievementCard}>
+                                <Award size={28} color={colors.primary} />
+                                <Text style={styles.achievementName}>
+                                    Fluency Badge
+                                </Text>
+                                <Text style={styles.achievementDesc}>
+                                    Reached 90% accuracy
+                                </Text>
+                            </View>
+                            <View style={styles.achievementCard}>
+                                <Trophy size={28} color={colors.primary} />
+                                <Text style={styles.achievementName}>
+                                    Scenario Explorer
+                                </Text>
+                                <Text style={styles.achievementDesc}>
+                                    Completed all conversation scenarios
                                 </Text>
                             </View>
                         </View>

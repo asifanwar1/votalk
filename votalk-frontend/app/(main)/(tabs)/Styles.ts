@@ -13,7 +13,7 @@ export const useHomeStyles = () => {
             flex: 1,
         },
         scrollContent: {
-            paddingBottom: 96,
+            paddingBottom: 50,
         },
         header: {
             borderBottomLeftRadius: 24,
@@ -222,7 +222,7 @@ export const useLearnStyles = () => {
             flex: 1,
         },
         scrollContent: {
-            paddingBottom: 96,
+            paddingBottom: 50,
         },
         header: {
             borderBottomLeftRadius: 24,
@@ -231,6 +231,7 @@ export const useLearnStyles = () => {
             paddingTop: 60,
             paddingBottom: 32,
             marginBottom: 24,
+            height: 180,
         },
         headerTop: {
             flexDirection: "row",
@@ -351,7 +352,7 @@ export const useProgressStyles = () => {
             flex: 1,
         },
         scrollContent: {
-            paddingBottom: 96,
+            paddingBottom: 50,
         },
         header: {
             borderBottomLeftRadius: 24,
@@ -359,6 +360,7 @@ export const useProgressStyles = () => {
             paddingHorizontal: 24,
             paddingTop: 60,
             paddingBottom: 32,
+            height: 180,
         },
         headerTop: {
             flexDirection: "row",
@@ -455,7 +457,7 @@ export const useProgressStyles = () => {
             flexDirection: "row",
             flexWrap: "wrap",
             justifyContent: "space-between",
-            gap: 12,
+            gap: 1,
         },
         statBox: {
             flexBasis: "48%",
@@ -473,6 +475,353 @@ export const useProgressStyles = () => {
             fontSize: 13,
             color: colors.textSecondary,
             textAlign: "center",
+        },
+        achievementsGrid: {
+            flexDirection: "row",
+            flexWrap: "wrap",
+            gap: 1,
+            justifyContent: "space-between",
+        },
+        achievementCard: {
+            borderRadius: 16,
+            padding: 16,
+            alignItems: "center",
+            width: "48%",
+            marginBottom: 12,
+            textAlign: "center",
+        },
+        achievementName: {
+            fontSize: 16,
+            fontWeight: "600",
+            color: "#1e293b",
+            marginTop: 8,
+            marginBottom: 4,
+            textAlign: "center",
+        },
+        achievementDesc: {
+            fontSize: 12,
+            color: "#64748b",
+            textAlign: "center",
+        },
+    });
+};
+
+export const useMoreStyles = () => {
+    const { colors } = useTheme();
+    return StyleSheet.create({
+        container: {
+            flex: 1,
+        },
+        scrollView: {
+            flex: 1,
+        },
+        scrollContent: {
+            paddingBottom: 96,
+        },
+        header: {
+            borderBottomLeftRadius: 24,
+            borderBottomRightRadius: 24,
+            paddingHorizontal: 24,
+            paddingTop: 60,
+            paddingBottom: 32,
+            height: 180,
+        },
+        headerTop: {
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+        },
+        headerText: {
+            flex: 1,
+        },
+        headerTitle: {
+            color: "#fff",
+            fontSize: 28,
+            fontWeight: "bold",
+        },
+        headerSubtitle: {
+            color: "rgba(255,255,255,0.85)",
+            fontSize: 14,
+            marginTop: 2,
+        },
+        trophyContainer: {
+            width: 48,
+            height: 48,
+            backgroundColor: "rgba(255,255,255,0.2)",
+            borderRadius: 24,
+            alignItems: "center",
+            justifyContent: "center",
+        },
+        section: {
+            paddingHorizontal: 24,
+            marginTop: 24,
+        },
+        moreItem: {
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+            backgroundColor: colors.card,
+            borderRadius: 16,
+            paddingVertical: 16,
+            paddingHorizontal: 18,
+            marginBottom: 12,
+            shadowColor: "#000",
+            shadowOpacity: 0.04,
+            shadowRadius: 4,
+            shadowOffset: { width: 0, height: 1 },
+            elevation: 1,
+            borderWidth: 1,
+            borderColor: colors.border,
+        },
+        moreItemLeft: {
+            flexDirection: "row",
+            alignItems: "center",
+            gap: 12,
+        },
+        moreItemLabel: {
+            fontSize: 16,
+            color: colors.textPrimary,
+            fontWeight: "500",
+        },
+    });
+};
+
+export const useSpeakStyles = () => {
+    const { colors } = useTheme();
+
+    return StyleSheet.create({
+        container: {
+            flex: 1,
+            backgroundColor: colors.background,
+        },
+        header: {
+            borderBottomLeftRadius: 24,
+            borderBottomRightRadius: 24,
+            paddingHorizontal: 24,
+            paddingTop: 40,
+            paddingBottom: 32,
+            backgroundColor: colors.primary,
+            height: 180,
+        },
+        headerRow: {
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+            marginBottom: 12,
+        },
+        headerBack: {
+            color: "#fff",
+            fontSize: 16,
+        },
+        languagePickerContainer: {
+            flexDirection: "row",
+            alignItems: "center",
+            backgroundColor: "rgba(255,255,255,0.15)",
+            borderRadius: 999,
+            paddingHorizontal: 12,
+            paddingVertical: 2,
+        },
+        picker: {
+            color: "#fff",
+            width: 120,
+            marginLeft: 4,
+            backgroundColor: "transparent",
+        },
+        headerCenter: {
+            alignItems: "center",
+        },
+        headerMode: {
+            color: "rgba(255,255,255,0.8)",
+            fontSize: 14,
+            marginBottom: 2,
+        },
+        headerTitle: {
+            color: "#fff",
+            fontWeight: "bold",
+            fontSize: 20,
+        },
+        avatarSection: {
+            alignItems: "center",
+            paddingVertical: 24,
+        },
+        avatarWrapper: {
+            position: "relative",
+            alignItems: "center",
+            justifyContent: "center",
+        },
+        avatar: {
+            width: 96,
+            height: 96,
+            borderRadius: 48,
+            backgroundColor: colors.primary,
+            alignItems: "center",
+            justifyContent: "center",
+        },
+        avatarPing: {
+            position: "absolute",
+            top: -8,
+            left: -8,
+            right: -8,
+            bottom: -8,
+            borderRadius: 56,
+            borderWidth: 4,
+            borderColor: colors.secondary,
+            opacity: 0.5,
+        },
+        chatSection: {
+            flex: 1,
+            paddingHorizontal: 16,
+        },
+        chatRow: {
+            flexDirection: "row",
+            alignItems: "flex-end",
+            marginBottom: 16,
+        },
+        avatarSmallAI: {
+            width: 32,
+            height: 32,
+            borderRadius: 16,
+            backgroundColor: colors.primary,
+            alignItems: "center",
+            justifyContent: "center",
+            marginRight: 8,
+        },
+        avatarSmallUser: {
+            width: 32,
+            height: 32,
+            borderRadius: 16,
+            backgroundColor: colors.success,
+            alignItems: "center",
+            justifyContent: "center",
+            marginLeft: 8,
+        },
+        avatarSmallText: {
+            color: "#fff",
+            fontSize: 12,
+            fontWeight: "bold",
+        },
+        chatBubbleAI: {
+            backgroundColor: colors.inputBackground,
+            borderRadius: 18,
+            borderTopLeftRadius: 4,
+            paddingHorizontal: 16,
+            paddingVertical: 12,
+            maxWidth: "80%",
+            flex: 1,
+        },
+        chatBubbleUser: {
+            backgroundColor: colors.primary,
+            borderRadius: 18,
+            borderTopRightRadius: 4,
+            paddingHorizontal: 16,
+            paddingVertical: 12,
+            maxWidth: "80%",
+            flex: 1,
+        },
+        chatTextAI: {
+            color: colors.textPrimary,
+            fontSize: 15,
+        },
+        chatTextUser: {
+            color: "#fff",
+            fontSize: 15,
+        },
+        playButton: {
+            flexDirection: "row",
+            alignItems: "center",
+            marginTop: 8,
+        },
+        playButtonText: {
+            color: colors.primary,
+            fontSize: 14,
+            marginLeft: 4,
+        },
+        pronunciationBox: {
+            marginTop: 10,
+            backgroundColor: "rgba(255,255,255,0.15)",
+            borderRadius: 8,
+            padding: 8,
+        },
+        pronunciationRow: {
+            flexDirection: "row",
+            justifyContent: "space-between",
+            marginBottom: 4,
+        },
+        pronunciationLabel: {
+            color: "#fff",
+            fontSize: 12,
+        },
+        pronunciationScore: {
+            color: "#fff",
+            fontWeight: "bold",
+            fontSize: 12,
+        },
+        pronunciationBarBg: {
+            width: "100%",
+            backgroundColor: "rgba(255,255,255,0.2)",
+            borderRadius: 8,
+            height: 6,
+            overflow: "hidden",
+        },
+        pronunciationBarFill: {
+            backgroundColor: colors.success,
+            height: 6,
+            borderRadius: 8,
+        },
+        inputSection: {
+            flexDirection: "row",
+            alignItems: "center",
+            padding: 16,
+            backgroundColor: colors.card,
+            borderTopWidth: 1,
+            borderTopColor: colors.border,
+            marginBottom: 30,
+        },
+        inputIconButton: {
+            width: 40,
+            height: 40,
+            borderRadius: 20,
+            backgroundColor: colors.inputBackground,
+            alignItems: "center",
+            justifyContent: "center",
+            marginHorizontal: 4,
+        },
+        speakButton: {
+            flex: 1,
+            height: 56,
+            borderRadius: 28,
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+            marginHorizontal: 8,
+            gap: 8,
+        },
+        speakButtonActive: {
+            backgroundColor: colors.danger,
+            shadowColor: colors.danger,
+            shadowOpacity: 0.3,
+            shadowRadius: 8,
+            shadowOffset: { width: 0, height: 4 },
+        },
+        speakButtonInactive: {
+            backgroundColor: colors.primary,
+            shadowColor: colors.primary,
+            shadowOpacity: 0.2,
+            shadowRadius: 6,
+            shadowOffset: { width: 0, height: 2 },
+        },
+        speakButtonText: {
+            color: "#fff",
+            fontWeight: "600",
+            fontSize: 16,
+            marginLeft: 8,
+        },
+        avatarPulse: {
+            shadowColor: colors.primary,
+            shadowOpacity: 0.5,
+            shadowRadius: 16,
+            shadowOffset: { width: 0, height: 0 },
+            elevation: 8,
         },
     });
 };
