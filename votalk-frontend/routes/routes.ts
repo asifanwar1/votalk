@@ -27,8 +27,8 @@ export enum TAB_ROUTES {
 }
 
 export const AUTH_BASE_PATH = "/(auth)";
-export const APP_ROOT_PATH = "/(app)";
-export const TABS_BASE_PATH = "/(app)/(tabs)";
+export const APP_ROOT_PATH = "/(main)";
+export const TABS_BASE_PATH = "/(main)/(tabs)";
 export const TABS_SCREEN = "(tabs)";
 
 export const ROUTE_PATHS = {

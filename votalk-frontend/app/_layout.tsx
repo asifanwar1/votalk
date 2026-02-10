@@ -7,21 +7,18 @@ import { KeyboardProvider } from "react-native-keyboard-controller";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 // import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 
-const RootLayout = () => {
+const MainLayout = () => {
     return (
         <>
-            {/* <StatusBar style="auto" />
-            <Stack screenOptions={{ headerShown: false, animation: "none" }}>
-                <Stack.Screen name="(auth)" options={{ headerShown: false }} />
-                <Stack.Screen name="(main)" options={{ headerShown: false }} />
-            </Stack> */}
-
-            <GestureHandlerRootView>
+            <GestureHandlerRootView style={{ flex: 1 }}>
                 <SafeAreaProvider>
                     <KeyboardProvider>
-                        {/* <BottomSheetModalProvider> */}
-                        <Slot />
-                        {/* </BottomSheetModalProvider> */}
+                        <Stack
+                            screenOptions={{
+                                headerShown: false,
+                                animation: "none",
+                            }}
+                        />
                     </KeyboardProvider>
                 </SafeAreaProvider>
             </GestureHandlerRootView>
@@ -29,6 +26,6 @@ const RootLayout = () => {
     );
 };
 
-export default RootLayout;
+export default MainLayout;
 
 const styles = StyleSheet.create({});
