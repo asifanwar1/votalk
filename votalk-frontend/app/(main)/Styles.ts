@@ -187,3 +187,51 @@ export const useAboutStyles = () => {
         },
     });
 };
+
+export const usePrivacyPolicyStyles = () => {
+    const { colors } = useTheme();
+    return StyleSheet.create({
+        container: {
+            flex: 1,
+            backgroundColor: colors.background,
+        },
+        header: {
+            paddingTop: 56,
+            paddingBottom: 24,
+            paddingHorizontal: 24,
+            backgroundColor: colors.primary,
+            borderBottomLeftRadius: 24,
+            borderBottomRightRadius: 24,
+        },
+        headerTitle: {
+            color: "#fff",
+            fontSize: 28,
+            fontWeight: "bold",
+        },
+        content: {
+            padding: 24,
+            alignItems: "center",
+        },
+        iconCircle: {
+            width: 64,
+            height: 64,
+            borderRadius: 32,
+            backgroundColor: colors.primary,
+            alignItems: "center",
+            justifyContent: "center",
+            marginBottom: 16,
+        },
+        title: {
+            fontSize: 20,
+            fontWeight: "bold",
+            color: colors.textPrimary,
+            marginBottom: 16,
+        },
+        body: {
+            fontSize: 15,
+            color: colors.textPrimary,
+            textAlign: "left",
+            marginBottom: 12,
+        },
+    });
+};
