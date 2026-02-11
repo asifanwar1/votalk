@@ -230,6 +230,10 @@ export const usePrivacyPolicyStyles = () => {
             backgroundColor: colors.primary,
             borderBottomLeftRadius: 24,
             borderBottomRightRadius: 24,
+            height: 180,
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
         },
         headerTitle: {
             color: "#fff",
@@ -260,6 +264,19 @@ export const usePrivacyPolicyStyles = () => {
             color: colors.textPrimary,
             textAlign: "left",
             marginBottom: 12,
+        },
+        backBtn: {
+            backgroundColor: colors.primary,
+            borderRadius: 16,
+            paddingVertical: 4,
+            alignItems: "center",
+            flexDirection: "row",
+            gap: 6,
+        },
+        saveBtnText: {
+            color: "#fff",
+            fontWeight: "bold",
+            fontSize: 16,
         },
     });
 };
