@@ -16,57 +16,56 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 import { useTheme } from "../../../hooks/useTheme";
 import { useMoreStyles } from "./Styles";
-import { APP_ROUTES } from "../../../routes/routes";
-import { useNavigation } from "@react-navigation/native";
+import { ROUTE_PATHS } from "../../../routes/routes";
+import { useRouter } from "expo-router";
 
 const MORE_ITEMS = [
     {
         icon: <User size={22} color="#8b5cf6" />,
         label: "Profile",
-        route: APP_ROUTES.PROFILE,
+        route: ROUTE_PATHS.APP.PROFILE,
     },
     {
         icon: <MessageSquare size={22} color="#8b5cf6" />,
         label: "Chat History",
-        route: APP_ROUTES.CONVERSATIONS,
+        route: ROUTE_PATHS.APP.CONVERSATIONS,
     },
     {
         icon: <Award size={22} color="#8b5cf6" />,
         label: "Badges",
-        route: APP_ROUTES.BADGES,
+        route: ROUTE_PATHS.APP.BADGES,
     },
     {
         icon: <Bell size={22} color="#8b5cf6" />,
         label: "Notifications",
-        route: APP_ROUTES.NOTIFICATIONS,
+        route: ROUTE_PATHS.APP.NOTIFICATIONS,
     },
     {
         icon: <Info size={22} color="#8b5cf6" />,
         label: "About",
-        route: APP_ROUTES.ABOUT_US,
+        route: ROUTE_PATHS.APP.ABOUT_US,
     },
     {
         icon: <Shield size={22} color="#8b5cf6" />,
         label: "Privacy Policy",
-        route: APP_ROUTES.PRIVACY_POLICY,
+        route: ROUTE_PATHS.APP.PRIVACY_POLICY,
     },
     {
         icon: <Mail size={22} color="#8b5cf6" />,
         label: "Contact Us",
-        route: APP_ROUTES.CONTACT_US,
+        route: ROUTE_PATHS.APP.CONTACT_US,
     },
     {
         icon: <Settings size={22} color="#8b5cf6" />,
         label: "Settings",
-        route: APP_ROUTES.SETTINGS,
+        route: ROUTE_PATHS.APP.SETTINGS,
     },
 ];
 
 const More = () => {
     const { colors } = useTheme();
     const styles = useMoreStyles();
-    const navigation = useNavigation();
-
+    const router = useRouter();
     return (
         <View style={styles.container}>
             <ScrollView
@@ -98,9 +97,7 @@ const More = () => {
                         <TouchableOpacity
                             key={idx}
                             style={styles.moreItem}
-                            onPress={() =>
-                                navigation.navigate(item.route as never)
-                            }
+                            onPress={() => router.push(item.route)}
                             activeOpacity={0.8}
                         >
                             <View style={styles.moreItemLeft}>

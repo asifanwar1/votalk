@@ -9,12 +9,16 @@ export const useProfileStyles = () => {
             backgroundColor: colors.background,
         },
         header: {
-            paddingTop: 56,
+            paddingTop: 10,
             paddingBottom: 24,
             paddingHorizontal: 24,
             backgroundColor: colors.primary,
             borderBottomLeftRadius: 24,
             borderBottomRightRadius: 24,
+            height: 180,
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
         },
         headerTitle: {
             color: "#fff",
@@ -51,8 +55,7 @@ export const useProfileStyles = () => {
         avatarActions: {
             flexDirection: "row",
             position: "absolute",
-            bottom: 0,
-            right: -8,
+            bottom: -5,
         },
         avatarActionBtn: {
             backgroundColor: "#fff",
@@ -109,6 +112,14 @@ export const useProfileStyles = () => {
             shadowOffset: { width: 0, height: 2 },
             elevation: 2,
         },
+        backBtn: {
+            backgroundColor: colors.primary,
+            borderRadius: 16,
+            paddingVertical: 4,
+            alignItems: "center",
+            flexDirection: "row",
+            gap: 6,
+        },
         saveBtnText: {
             color: "#fff",
             fontWeight: "bold",
@@ -125,12 +136,16 @@ export const useAboutStyles = () => {
             backgroundColor: colors.background,
         },
         header: {
-            paddingTop: 56,
+            paddingTop: 10,
             paddingBottom: 24,
             paddingHorizontal: 24,
             backgroundColor: colors.primary,
             borderBottomLeftRadius: 24,
             borderBottomRightRadius: 24,
+            height: 180,
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
         },
         headerTitle: {
             color: "#fff",
@@ -184,6 +199,19 @@ export const useAboutStyles = () => {
             color: colors.textSecondary,
             fontSize: 13,
             marginTop: 24,
+        },
+        backBtn: {
+            backgroundColor: colors.primary,
+            borderRadius: 16,
+            paddingVertical: 4,
+            alignItems: "center",
+            flexDirection: "row",
+            gap: 6,
+        },
+        saveBtnText: {
+            color: "#fff",
+            fontWeight: "bold",
+            fontSize: 16,
         },
     });
 };

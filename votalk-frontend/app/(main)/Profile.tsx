@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, TextInput, Image } from "react-native";
 import * as ImagePicker from "expo-image-picker";
-import { Camera, Pencil, User } from "lucide-react-native";
+import { ArrowLeft, Camera, Pencil, User } from "lucide-react-native";
 import { useTheme } from "../../hooks/useTheme";
 import { useProfileStyles } from "./Styles";
+import { useRouter } from "expo-router";
 
 const Profile = () => {
     const { colors } = useTheme();
     const styles = useProfileStyles();
+    const router = useRouter();
     const [name, setName] = useState("Your Name");
     const [bio, setBio] = useState("Tell us about yourself...");
     const [editingName, setEditingName] = useState(false);
@@ -41,6 +43,13 @@ const Profile = () => {
         <View style={styles.container}>
             <View style={styles.header}>
                 <Text style={styles.headerTitle}>Profile</Text>
+                <TouchableOpacity
+                    style={styles.backBtn}
+                    onPress={() => router.push("/(main)/(tabs)/More")}
+                >
+                    <ArrowLeft size={18} color="#fff" />
+                    <Text style={styles.saveBtnText}>Back</Text>
+                </TouchableOpacity>
             </View>
             <View style={styles.avatarSection}>
                 <View style={styles.avatarWrapper}>

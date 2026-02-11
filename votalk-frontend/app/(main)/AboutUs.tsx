@@ -8,16 +8,24 @@ import {
 } from "react-native";
 import { useTheme } from "../../hooks/useTheme";
 import { useAboutStyles } from "./Styles";
-import { Info } from "lucide-react-native";
+import { ArrowLeft, Info } from "lucide-react-native";
+import { useRouter } from "expo-router";
 
-export default function About() {
+export default function AboutUs() {
     const { colors } = useTheme();
     const styles = useAboutStyles();
-
+    const router = useRouter();
     return (
         <View style={styles.container}>
             <View style={styles.header}>
                 <Text style={styles.headerTitle}>About Us</Text>
+                <TouchableOpacity
+                    style={styles.backBtn}
+                    onPress={() => router.push("/(main)/(tabs)/More")}
+                >
+                    <ArrowLeft size={18} color="#fff" />
+                    <Text style={styles.saveBtnText}>Back</Text>
+                </TouchableOpacity>
             </View>
             <ScrollView contentContainerStyle={styles.content}>
                 <View style={styles.iconCircle}>

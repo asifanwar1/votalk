@@ -1,7 +1,7 @@
 import { View, Text } from "react-native";
 import React from "react";
 
-const ChatHistory = () => {
+const Conversations = () => {
     return (
         <View>
             <Text>ChatHistory</Text>
@@ -9,4 +9,4 @@ const ChatHistory = () => {
     );
 };
 
-export default ChatHistory;
+export default Conversations;
