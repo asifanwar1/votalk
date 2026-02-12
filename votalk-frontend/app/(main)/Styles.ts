@@ -280,3 +280,123 @@ export const usePrivacyPolicyStyles = () => {
         },
     });
 };
+
+export const useContactUsStyles = () => {
+    const { colors } = useTheme();
+    return StyleSheet.create({
+        container: {
+            flex: 1,
+            backgroundColor: colors.background,
+        },
+        header: {
+            paddingTop: 10,
+            paddingBottom: 24,
+            paddingHorizontal: 24,
+            backgroundColor: colors.primary,
+            borderBottomLeftRadius: 24,
+            borderBottomRightRadius: 24,
+            height: 180,
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+        },
+        headerTitle: {
+            color: "#fff",
+            fontSize: 28,
+            fontWeight: "bold",
+        },
+        backBtn: {
+            backgroundColor: colors.primary,
+            borderRadius: 16,
+            paddingVertical: 4,
+            alignItems: "center",
+            flexDirection: "row",
+            gap: 6,
+        },
+        saveBtnText: {
+            color: "#fff",
+            fontWeight: "bold",
+            fontSize: 16,
+        },
+        content: {
+            padding: 24,
+            alignItems: "center",
+        },
+        iconCircle: {
+            width: 64,
+            height: 64,
+            borderRadius: 32,
+            backgroundColor: colors.primary,
+            alignItems: "center",
+            justifyContent: "center",
+            marginBottom: 16,
+        },
+        title: {
+            fontSize: 24,
+            fontWeight: "bold",
+            color: colors.textPrimary,
+            marginBottom: 4,
+        },
+        subtitle: {
+            fontSize: 16,
+            color: colors.textSecondary,
+            marginBottom: 16,
+            textAlign: "center",
+        },
+        contactRow: {
+            flexDirection: "row",
+            alignItems: "center",
+            marginBottom: 10,
+        },
+        contactText: {
+            color: colors.textPrimary,
+            fontSize: 16,
+            marginLeft: 10,
+            textDecorationLine: "underline",
+        },
+        form: {
+            width: "100%",
+            marginTop: 24,
+        },
+        label: {
+            color: colors.textSecondary,
+            fontSize: 14,
+            marginBottom: 6,
+        },
+        input: {
+            backgroundColor: colors.inputBackground,
+            color: colors.textPrimary,
+            fontSize: 16,
+            borderRadius: 10,
+            paddingHorizontal: 12,
+            paddingVertical: 10,
+            borderWidth: 1,
+            borderColor: colors.border,
+            marginBottom: 16,
+        },
+        messageInput: {
+            height: 100,
+            textAlignVertical: "top",
+        },
+        sendBtn: {
+            backgroundColor: colors.primary,
+            borderRadius: 16,
+            paddingVertical: 14,
+            alignItems: "center",
+            flexDirection: "row",
+            justifyContent: "center",
+            marginTop: 4,
+            shadowColor: colors.primary,
+            shadowOpacity: 0.12,
+            shadowRadius: 8,
+            shadowOffset: { width: 0, height: 2 },
+            elevation: 2,
+        },
+        sendBtnText: {
+            color: "#fff",
+            fontWeight: "bold",
+            fontSize: 16,
+            marginLeft: 8,
+        },
+    });
+};
