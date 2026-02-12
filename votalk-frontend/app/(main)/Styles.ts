@@ -495,3 +495,85 @@ export const useConversationsStyles = () => {
         },
     });
 };
+
+export const useBadgesStyles = () => {
+    const { colors } = useTheme();
+    return StyleSheet.create({
+        container: {
+            flex: 1,
+            backgroundColor: colors.background,
+        },
+        header: {
+            paddingTop: 10,
+            paddingBottom: 24,
+            paddingHorizontal: 24,
+            backgroundColor: colors.primary,
+            borderBottomLeftRadius: 24,
+            borderBottomRightRadius: 24,
+            height: 180,
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+        },
+        headerTitle: {
+            color: "#fff",
+            fontSize: 28,
+            fontWeight: "bold",
+        },
+        badgesListContent: {
+            padding: 24,
+            paddingTop: 8,
+        },
+        badgeItem: {
+            borderRadius: 16,
+            padding: 18,
+            marginBottom: 16,
+            flexDirection: "row",
+            alignItems: "center",
+        },
+        badgeIconCircle: {
+            width: 48,
+            height: 48,
+            borderRadius: 24,
+            alignItems: "center",
+            justifyContent: "center",
+            marginRight: 16,
+        },
+        badgeName: {
+            fontSize: 17,
+            fontWeight: "bold",
+        },
+        badgeDesc: {
+            fontSize: 14,
+            marginTop: 2,
+        },
+        badgeUnlocked: {
+            color: "#fff",
+            fontWeight: "bold",
+            fontSize: 16,
+        },
+        emptyText: {
+            color: colors.textSecondary,
+            textAlign: "center",
+            marginTop: 32,
+        },
+        backBtn: {
+            backgroundColor: colors.primary,
+            borderRadius: 16,
+            paddingVertical: 4,
+            alignItems: "center",
+            flexDirection: "row",
+            gap: 6,
+        },
+        saveBtnText: {
+            color: "#fff",
+            fontWeight: "bold",
+            fontSize: 16,
+        },
+        badgeStatusIcon: {
+            marginLeft: 12,
+            alignItems: "center",
+            justifyContent: "center",
+        },
+    });
+};
