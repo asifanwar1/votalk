@@ -13,12 +13,14 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 import { useHomeStyles } from "./Styles";
 import { useTheme } from "../../../hooks/useTheme";
+import { useRouter } from "expo-router";
 
 export default function Home() {
     const [activeTab, setActiveTab] = useState("home");
     const [isRecording, setIsRecording] = useState(false);
     const styles = useHomeStyles();
     const { colors } = useTheme();
+    const router = useRouter();
 
     const conversationModes = [
         {
@@ -122,7 +124,7 @@ export default function Home() {
                 <View style={styles.section}>
                     <Text style={styles.sectionTitle}>Quick Start</Text>
                     <TouchableOpacity
-                        onPress={() => setActiveTab("conversation")}
+                        onPress={() => router.push("/Speak")}
                         activeOpacity={0.8}
                     >
                         <LinearGradient
