@@ -10,6 +10,7 @@ import { Mail } from "lucide-react-native";
 import { useRouter } from "expo-router";
 import { useForgotPasswordStyles } from "./Styles";
 import { Button } from "../../components/Button/Button";
+import { CustomInput } from "@/components/Input/Input";
 
 const ForgotPassword = () => {
     const [email, setEmail] = useState("");
@@ -49,18 +50,19 @@ const ForgotPassword = () => {
                                     Forgot Password
                                 </Text>
 
-                                <Text style={styles.label}>Email</Text>
-                                <View style={styles.inputWrapper}>
-                                    <Mail size={20} style={styles.inputIcon} />
-                                    <TextInput
-                                        style={styles.input}
-                                        placeholder="your.email@example.com"
-                                        value={email}
-                                        onChangeText={setEmail}
-                                        keyboardType="email-address"
-                                        autoCapitalize="none"
-                                    />
-                                </View>
+                                <CustomInput
+                                    label="Email"
+                                    value={email}
+                                    onChangeText={setEmail}
+                                    placeholder="your.email@example.com"
+                                    keyboardType="email-address"
+                                    startIcon={
+                                        <Mail
+                                            size={20}
+                                            color={styles.inputIcon.color}
+                                        />
+                                    }
+                                />
 
                                 <Button
                                     title="Send Reset Link"

@@ -10,6 +10,7 @@ import { useRouter } from "expo-router";
 import { useOtpStyles } from "./Styles";
 import { Mail } from "lucide-react-native";
 import { Button } from "../../components/Button/Button";
+import { OtpInput } from "@/components/OtpInput/OtpInput";
 
 const OTP_LENGTH = 4;
 
@@ -18,18 +19,6 @@ const Otp = () => {
     const [submitted, setSubmitted] = useState(false);
     const styles = useOtpStyles();
     const router = useRouter();
-    const inputs = useRef<Array<TextInput | null>>([]);
-
-    const handleChange = (text: string, idx: number) => {
-        if (!/^\d*$/.test(text)) return;
-        const newOtp = [...otp];
-        newOtp[idx] = text;
-        setOtp(newOtp);
-
-        if (text && idx < OTP_LENGTH - 1) {
-            inputs.current[idx + 1]?.focus();
-        }
-    };
 
     const handleSubmit = () => {
         setSubmitted(true);
@@ -59,26 +48,11 @@ const Otp = () => {
                         ) : (
                             <>
                                 <Text style={styles.title}>Enter OTP</Text>
-
-                                <View style={styles.otpRow}>
-                                    {otp.map((digit, idx) => (
-                                        <TextInput
-                                            key={idx}
-                                            ref={(ref) => {
-                                                inputs.current[idx] = ref;
-                                            }}
-                                            style={styles.otpInput}
-                                            keyboardType="number-pad"
-                                            maxLength={1}
-                                            value={digit}
-                                            onChangeText={(text) =>
-                                                handleChange(text, idx)
-                                            }
-                                            autoFocus={idx === 0}
-                                            returnKeyType="next"
-                                        />
-                                    ))}
-                                </View>
+                                <OtpInput
+                                    value={otp}
+                                    onChange={setOtp}
+                                    length={4}
+                                />
 
                                 <Button
                                     title="Verify"

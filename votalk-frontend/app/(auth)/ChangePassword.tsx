@@ -10,6 +10,7 @@ import { Lock, Eye, EyeOff } from "lucide-react-native";
 import { useRouter } from "expo-router";
 import { useChangePasswordStyles } from "./Styles";
 import { Button } from "../../components/Button/Button";
+import { CustomInput } from "@/components/Input/Input";
 
 const ChangePassword = () => {
     const [password, setPassword] = useState("");
@@ -50,44 +51,34 @@ const ChangePassword = () => {
                                     Change Password
                                 </Text>
 
-                                <Text style={styles.label}>New Password</Text>
-                                <View style={styles.inputWrapper}>
-                                    <Lock size={20} style={styles.inputIcon} />
-                                    <TextInput
-                                        style={styles.input}
-                                        placeholder="New password"
-                                        value={password}
-                                        onChangeText={setPassword}
-                                        secureTextEntry={!showPassword}
-                                        autoCapitalize="none"
-                                    />
-                                    <TouchableOpacity
-                                        style={styles.eyeButton}
-                                        onPress={() =>
-                                            setShowPassword((prev) => !prev)
-                                        }
-                                    >
-                                        {showPassword ? (
-                                            <EyeOff size={20} />
-                                        ) : (
-                                            <Eye size={20} />
-                                        )}
-                                    </TouchableOpacity>
-                                </View>
-                                <Text style={styles.label}>
-                                    Confirm Password
-                                </Text>
-                                <View style={styles.inputWrapper}>
-                                    <Lock size={20} style={styles.inputIcon} />
-                                    <TextInput
-                                        style={styles.input}
-                                        placeholder="Confirm password"
-                                        value={confirmPassword}
-                                        onChangeText={setConfirmPassword}
-                                        secureTextEntry={!showPassword}
-                                        autoCapitalize="none"
-                                    />
-                                </View>
+                                <CustomInput
+                                    label="New Password"
+                                    value={password}
+                                    onChangeText={setPassword}
+                                    placeholder="New password"
+                                    secureTextEntry={true}
+                                    startIcon={
+                                        <Lock
+                                            size={20}
+                                            color={styles.inputIcon.color}
+                                        />
+                                    }
+                                    showPasswordToggle={true}
+                                />
+                                <CustomInput
+                                    label="Confirm Password"
+                                    value={confirmPassword}
+                                    onChangeText={setConfirmPassword}
+                                    placeholder="Confirm password"
+                                    secureTextEntry={true}
+                                    startIcon={
+                                        <Lock
+                                            size={20}
+                                            color={styles.inputIcon.color}
+                                        />
+                                    }
+                                    showPasswordToggle={true}
+                                />
 
                                 <Button
                                     title="Change Password"
