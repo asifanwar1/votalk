@@ -1,7 +1,7 @@
+import { ThemeColors } from "@/theme/colors";
 import { StyleSheet } from "react-native";
-import { radius, spacing } from "../../theme";
 
-export const createStyles = (colors: any) =>
+export const createButtonStyles = (colors: ThemeColors) =>
     StyleSheet.create({
         button: {
             backgroundColor: colors.primary,

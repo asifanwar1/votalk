@@ -75,3 +75,5 @@ export const DarkColors = {
     statValue3: "#16a34a",
     statValue4: "#ea580c",
 };
+
+export type ThemeColors = typeof DarkColors | typeof LightColors;

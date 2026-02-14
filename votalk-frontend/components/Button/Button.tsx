@@ -4,14 +4,18 @@ import {
     TextStyle,
     TouchableOpacity,
     ViewStyle,
+    ActivityIndicator,
 } from "react-native";
+import { createButtonStyles } from "./styles";
 
 type ButtonProps = {
     title: string;
     onPress: () => void;
     buttonStyles?: StyleProp<ViewStyle>;
     textStyles?: StyleProp<TextStyle>;
+    loaderStyles?: StyleProp<ViewStyle>;
     isDisabled?: boolean;
+    loading?: boolean;
 };
 
 export const Button = ({
@@ -19,15 +23,21 @@ export const Button = ({
     onPress,
     buttonStyles,
     textStyles,
+    loaderStyles,
     isDisabled,
+    loading = false,
 }: ButtonProps) => {
     return (
         <TouchableOpacity
-            style={buttonStyles}
+            style={[buttonStyles]}
             onPress={onPress}
-            disabled={isDisabled}
+            disabled={isDisabled || loading}
         >
-            <Text style={textStyles}>{title}</Text>
+            {loading ? (
+                <ActivityIndicator style={[loaderStyles]} />
+            ) : (
+                <Text style={[textStyles]}>{title}</Text>
+            )}
         </TouchableOpacity>
     );
 };
