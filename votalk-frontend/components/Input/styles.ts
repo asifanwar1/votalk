@@ -1,18 +1,35 @@
 import { StyleSheet } from "react-native";
-import { radius, spacing } from "../../theme";
+import { ThemeColors } from "@/theme/colors";
 
-export const createStyles = (colors: any) =>
+export const useCustomInputStyles = (colors: ThemeColors) =>
     StyleSheet.create({
-        wrapper: {
-            backgroundColor: colors.inputBg,
-            borderRadius: radius.lg,
+        label: {
+            fontSize: 14,
+            fontWeight: "500",
+            color: colors.textSecondary,
+            marginBottom: 8,
+        },
+        inputWrapper: {
+            flexDirection: "row",
+            alignItems: "center",
+            backgroundColor: colors.inputBackground,
+            borderRadius: 16,
             borderWidth: 1,
             borderColor: colors.border,
-            paddingHorizontal: spacing.md,
+            paddingHorizontal: 12,
+            paddingVertical: 4,
+            position: "relative",
+        },
+        inputIcon: {
+            marginRight: 8,
         },
         input: {
+            flex: 1,
+            paddingVertical: 12,
             fontSize: 16,
-            paddingVertical: spacing.md,
             color: colors.textPrimary,
+        },
+        eyeButton: {
+            padding: 4,
         },
     });

@@ -23,16 +23,35 @@ import {
 } from "lucide-react-native";
 import { useLoginStyles } from "./Styles";
 import { Button } from "../../components/Button/Button";
+import { FeatureItem } from "@/components/FeatureItem/FeatureItem";
+import { CustomInput } from "@/components/Input/Input";
 
 const Login = () => {
     const [formData, setFormData] = useState({
         email: "",
         password: "",
     });
-    const [showPassword, setShowPassword] = useState(false);
     const router = useRouter();
 
     const styles = useLoginStyles();
+
+    const featureData = [
+        {
+            icon: <Globe size={24} color="#fff" />,
+            label: "20+ Languages",
+            backgroundColor: "#38bdf8",
+        },
+        {
+            icon: <Zap size={24} color="#fff" />,
+            label: "AI Feedback",
+            backgroundColor: "#a78bfa",
+        },
+        {
+            icon: <Award size={24} color="#fff" />,
+            label: "Real Progress",
+            backgroundColor: "#fb7185",
+        },
+    ];
 
     return (
         <SafeAreaView
@@ -63,65 +82,45 @@ const Login = () => {
                         <View style={styles.formSection}>
                             <View style={styles.formContainer}>
                                 <Text style={styles.signInTitle}>Sign In</Text>
-                                <View style={{ marginBottom: 16 }}>
-                                    <Text style={styles.label}>Email</Text>
-                                    <View style={styles.inputWrapper}>
+
+                                <CustomInput
+                                    label="Email"
+                                    value={formData.email}
+                                    onChangeText={(text) =>
+                                        setFormData({
+                                            ...formData,
+                                            email: text,
+                                        })
+                                    }
+                                    placeholder="your.email@example.com"
+                                    keyboardType="email-address"
+                                    startIcon={
                                         <Mail
                                             size={20}
-                                            style={styles.inputIcon}
+                                            color={styles.inputIcon.color}
                                         />
-                                        <TextInput
-                                            style={styles.input}
-                                            placeholder="your.email@example.com"
-                                            value={formData.email}
-                                            onChangeText={(text) =>
-                                                setFormData({
-                                                    ...formData,
-                                                    email: text,
-                                                })
-                                            }
-                                            keyboardType="email-address"
-                                            autoCapitalize="none"
-                                        />
-                                    </View>
-                                </View>
-                                <View style={{ marginBottom: 24 }}>
-                                    <Text style={styles.label}>Password</Text>
-                                    <View style={styles.inputWrapper}>
+                                    }
+                                />
+
+                                <CustomInput
+                                    label="Password"
+                                    value={formData.password}
+                                    onChangeText={(text) =>
+                                        setFormData({
+                                            ...formData,
+                                            password: text,
+                                        })
+                                    }
+                                    placeholder="Enter your password"
+                                    secureTextEntry={true}
+                                    startIcon={
                                         <Lock
                                             size={20}
-                                            style={styles.inputIcon}
+                                            color={styles.inputIcon.color}
                                         />
-                                        <TextInput
-                                            style={styles.input}
-                                            placeholder="Enter your password"
-                                            value={formData.password}
-                                            onChangeText={(text) =>
-                                                setFormData({
-                                                    ...formData,
-                                                    password: text,
-                                                })
-                                            }
-                                            secureTextEntry={!showPassword}
-                                            autoCapitalize="none"
-                                        />
-                                        <TouchableOpacity
-                                            style={styles.eyeButton}
-                                            onPress={() =>
-                                                setShowPassword((prev) => !prev)
-                                            }
-                                        >
-                                            {showPassword ? (
-                                                <EyeOff
-                                                    size={20}
-                                                    color="#888"
-                                                />
-                                            ) : (
-                                                <Eye size={20} color="#888" />
-                                            )}
-                                        </TouchableOpacity>
-                                    </View>
-                                </View>
+                                    }
+                                    showPasswordToggle={true}
+                                />
                                 <View
                                     style={{
                                         alignItems: "flex-end",
@@ -155,20 +154,18 @@ const Login = () => {
                                     <View style={styles.dividerLine} />
                                 </View>
                                 <View style={styles.socialRow}>
-                                    <TouchableOpacity
-                                        style={styles.socialButton}
-                                    >
-                                        <Text style={styles.socialButtonText}>
-                                            Google
-                                        </Text>
-                                    </TouchableOpacity>
-                                    <TouchableOpacity
-                                        style={styles.socialButton}
-                                    >
-                                        <Text style={styles.socialButtonText}>
-                                            Facebook
-                                        </Text>
-                                    </TouchableOpacity>
+                                    <Button
+                                        title="Google"
+                                        onPress={() => {}}
+                                        buttonStyles={styles.socialButton}
+                                        textStyles={styles.socialButtonText}
+                                    />
+                                    <Button
+                                        title="Facebook"
+                                        onPress={() => {}}
+                                        buttonStyles={styles.socialButton}
+                                        textStyles={styles.socialButtonText}
+                                    />
                                 </View>
                                 <View style={styles.signupRow}>
                                     <Text style={styles.signupText}>
@@ -185,45 +182,14 @@ const Login = () => {
                                 </View>
                             </View>
                             <View style={styles.featuresRow}>
-                                <View style={styles.featureItem}>
-                                    <View
-                                        style={[
-                                            styles.featureIcon,
-                                            { backgroundColor: "#38bdf8" },
-                                        ]}
-                                    >
-                                        <Globe size={24} color="#fff" />
-                                    </View>
-                                    <Text style={styles.featureText}>
-                                        20+ Languages
-                                    </Text>
-                                </View>
-                                <View style={styles.featureItem}>
-                                    <View
-                                        style={[
-                                            styles.featureIcon,
-                                            { backgroundColor: "#a78bfa" },
-                                        ]}
-                                    >
-                                        <Zap size={24} color="#fff" />
-                                    </View>
-                                    <Text style={styles.featureText}>
-                                        AI Feedback
-                                    </Text>
-                                </View>
-                                <View style={styles.featureItem}>
-                                    <View
-                                        style={[
-                                            styles.featureIcon,
-                                            { backgroundColor: "#fb7185" },
-                                        ]}
-                                    >
-                                        <Award size={24} color="#fff" />
-                                    </View>
-                                    <Text style={styles.featureText}>
-                                        Real Progress
-                                    </Text>
-                                </View>
+                                {featureData.map((item, idx) => (
+                                    <FeatureItem
+                                        key={item.label}
+                                        icon={item.icon}
+                                        label={item.label}
+                                        backgroundColor={item.backgroundColor}
+                                    />
+                                ))}
                             </View>
                         </View>
                     </View>
