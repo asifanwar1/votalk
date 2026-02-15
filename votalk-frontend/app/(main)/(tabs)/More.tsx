@@ -18,6 +18,7 @@ import { useTheme } from "../../../hooks/useTheme";
 import { useMoreStyles } from "./Styles";
 import { ROUTE_PATHS } from "../../../routes/routes";
 import { useRouter } from "expo-router";
+import { CustomLink } from "@/components/CustomLink/CustomLink";
 
 const MORE_ITEMS = [
     {
@@ -94,20 +95,12 @@ const More = () => {
 
                 <View style={styles.section}>
                     {MORE_ITEMS.map((item, idx) => (
-                        <TouchableOpacity
+                        <CustomLink
                             key={idx}
-                            style={styles.moreItem}
+                            icon={item.icon}
+                            label={item.label}
                             onPress={() => router.push(item.route)}
-                            activeOpacity={0.8}
-                        >
-                            <View style={styles.moreItemLeft}>
-                                {item.icon}
-                                <Text style={styles.moreItemLabel}>
-                                    {item.label}
-                                </Text>
-                            </View>
-                            <ChevronRight size={20} color="#64748b" />
-                        </TouchableOpacity>
+                        />
                     ))}
                 </View>
             </ScrollView>
