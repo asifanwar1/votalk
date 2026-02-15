@@ -282,7 +282,8 @@ export const useRegisterStyles = () => {
         passwordHint: {
             fontSize: 12,
             color: colors.textSecondary,
-            marginTop: -10,
+            marginTop: -20,
+            marginBottom: 20,
             marginLeft: 2,
         },
         checkboxRow: {
@@ -306,6 +307,7 @@ export const useRegisterStyles = () => {
             color: colors.textSecondary,
             flex: 1,
             flexWrap: "wrap",
+            flexDirection: "row",
         },
         link: {
             color: colors.primary,
@@ -375,7 +377,7 @@ export const useRegisterStyles = () => {
             fontWeight: "600",
         },
         passwordRow: {
-            flexDirection: "row",
+            flexDirection: "column",
         },
         trustContainer: {
             backgroundColor: "#faf5ff",
@@ -384,31 +386,31 @@ export const useRegisterStyles = () => {
             marginTop: 16,
             marginBottom: 32,
         },
-        trustRow: {
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "center",
-        },
-        trustItem: {
-            alignItems: "center",
-            flex: 1,
-        },
-        trustValue: {
-            fontSize: 20,
-            fontWeight: "bold",
-            marginBottom: 2,
-        },
-        trustLabel: {
-            fontSize: 12,
-            color: colors.textSecondary,
-            textAlign: "center",
-        },
-        trustDivider: {
-            width: 1,
-            height: 40,
-            backgroundColor: colors.border,
-            marginHorizontal: 8,
-        },
+        // trustRow: {
+        //     flexDirection: "row",
+        //     alignItems: "center",
+        //     justifyContent: "center",
+        // },
+        // trustItem: {
+        //     alignItems: "center",
+        //     flex: 1,
+        // },
+        // trustValue: {
+        //     fontSize: 20,
+        //     fontWeight: "bold",
+        //     marginBottom: 2,
+        // },
+        // trustLabel: {
+        //     fontSize: 12,
+        //     color: colors.textSecondary,
+        //     textAlign: "center",
+        // },
+        // trustDivider: {
+        //     width: 1,
+        //     height: 40,
+        //     backgroundColor: colors.border,
+        //     marginHorizontal: 8,
+        // },
         account: {
             alignItems: "center",
             flexDirection: "row",

@@ -16,6 +16,7 @@ export enum APP_ROUTES {
     PRIVACY_POLICY = "PrivacyPolicy",
     CONTACT_US = "ContactUs",
     SETTINGS = "Settings",
+    TERMS = "Terms",
 }
 
 export enum TAB_ROUTES {
@@ -57,5 +58,6 @@ export const ROUTE_PATHS = {
         PRIVACY_POLICY: `${APP_ROOT_PATH}/${APP_ROUTES.PRIVACY_POLICY}`,
         CONTACT_US: `${APP_ROOT_PATH}/${APP_ROUTES.CONTACT_US}`,
         SETTINGS: `${APP_ROOT_PATH}/${APP_ROUTES.SETTINGS}`,
+        TERMS: `${APP_ROOT_PATH}/${APP_ROUTES.TERMS}`,
     },
 } as const;

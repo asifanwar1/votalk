@@ -19,6 +19,8 @@ import { useRegisterStyles } from "./Styles";
 import { useRouter } from "expo-router";
 import { Button } from "../../components/Button/Button";
 import { CustomInput } from "@/components/Input/Input";
+import { ROUTE_PATHS } from "@/routes/routes";
+import { Stats } from "@/components/Stats/Stats";
 
 const Register = () => {
     const [formData, setFormData] = useState({
@@ -27,7 +29,23 @@ const Register = () => {
         password: "",
         confirmPassword: "",
     });
-    const [showPassword, setShowPassword] = useState(false);
+    const stats = [
+        {
+            value: "500K+",
+            label: "Active Learners",
+            color: "#8b5cf6",
+        },
+        {
+            value: "4.9★",
+            label: "App Rating",
+            color: "#fb7185",
+        },
+        {
+            value: "20+",
+            label: "Languages",
+            color: "#f59e42",
+        },
+    ];
 
     const styles = useRegisterStyles();
     const router = useRouter();
@@ -137,14 +155,26 @@ const Register = () => {
                             <TouchableOpacity
                                 style={styles.checkbox}
                             ></TouchableOpacity>
-                            <Text style={styles.termsText}>
-                                I agree to the{" "}
-                                <Text style={styles.link}>
-                                    Terms of Service
-                                </Text>{" "}
-                                and{" "}
-                                <Text style={styles.link}>Privacy Policy</Text>
-                            </Text>
+                            <View style={styles.termsText}>
+                                <Text>I agree to the </Text>
+                                <Button
+                                    title="Terms of Service"
+                                    textStyles={styles.link}
+                                    onPress={() =>
+                                        router.push(ROUTE_PATHS.APP.TERMS)
+                                    }
+                                />
+                                <Text> and </Text>
+                                <Button
+                                    title="Privacy Policy"
+                                    textStyles={styles.link}
+                                    onPress={() =>
+                                        router.push(
+                                            ROUTE_PATHS.APP.PRIVACY_POLICY,
+                                        )
+                                    }
+                                />
+                            </View>
                         </View>
 
                         <Button
@@ -192,47 +222,7 @@ const Register = () => {
                     </View>
 
                     <View style={styles.trustContainer}>
-                        <View style={styles.trustRow}>
-                            <View style={styles.trustItem}>
-                                <Text
-                                    style={[
-                                        styles.trustValue,
-                                        { color: "#8b5cf6" },
-                                    ]}
-                                >
-                                    500K+
-                                </Text>
-                                <Text style={styles.trustLabel}>
-                                    Active Learners
-                                </Text>
-                            </View>
-                            <View style={styles.trustDivider} />
-                            <View style={styles.trustItem}>
-                                <Text
-                                    style={[
-                                        styles.trustValue,
-                                        { color: "#fb7185" },
-                                    ]}
-                                >
-                                    4.9★
-                                </Text>
-                                <Text style={styles.trustLabel}>
-                                    App Rating
-                                </Text>
-                            </View>
-                            <View style={styles.trustDivider} />
-                            <View style={styles.trustItem}>
-                                <Text
-                                    style={[
-                                        styles.trustValue,
-                                        { color: "#f59e42" },
-                                    ]}
-                                >
-                                    20+
-                                </Text>
-                                <Text style={styles.trustLabel}>Languages</Text>
-                            </View>
-                        </View>
+                        <Stats stats={stats} />
                     </View>
                 </View>
             </ScrollView>
