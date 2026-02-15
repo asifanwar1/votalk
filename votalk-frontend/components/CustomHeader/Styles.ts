@@ -27,7 +27,7 @@ export const createHeaderStyles = (colors: { primary: string }) =>
             flexDirection: "row",
             gap: 6,
         },
-        saveBtnText: {
+        backBtnText: {
             color: "#fff",
             fontWeight: "bold",
             fontSize: 16,

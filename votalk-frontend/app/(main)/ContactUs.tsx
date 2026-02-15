@@ -20,6 +20,7 @@ import {
 } from "lucide-react-native";
 import { useRouter } from "expo-router";
 import { useContactUsStyles } from "./Styles";
+import CustomHeader from "@/components/CustomHeader/CustomHeader";
 
 const ContactUs = () => {
     const { colors } = useTheme();
@@ -56,7 +57,7 @@ const ContactUs = () => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.header}>
+            {/* <View style={styles.header}>
                 <Text style={styles.headerTitle}>Contact Us</Text>
                 <TouchableOpacity
                     style={styles.backBtn}
@@ -65,7 +66,14 @@ const ContactUs = () => {
                     <ArrowLeft size={18} color="#fff" />
                     <Text style={styles.saveBtnText}>Back</Text>
                 </TouchableOpacity>
-            </View>
+            </View> */}
+            <CustomHeader
+                title="Contact Us"
+                showBack={true}
+                backLabel="Back"
+                colors={colors}
+                onBack={() => router.push("/(main)/(tabs)/More")}
+            />
             <KeyboardAvoidingView
                 style={{ flex: 1 }}
                 behavior={Platform.OS === "ios" ? "padding" : "height"}

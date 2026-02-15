@@ -26,7 +26,7 @@ const CustomHeader: React.FC<CustomHeaderProps> = ({
             {showBack && (
                 <TouchableOpacity style={styles.backBtn} onPress={onBack}>
                     <ArrowLeft size={18} color="#fff" />
-                    <Text style={styles.saveBtnText}>{backLabel}</Text>
+                    <Text style={styles.backBtnText}>{backLabel}</Text>
                 </TouchableOpacity>
             )}
         </View>

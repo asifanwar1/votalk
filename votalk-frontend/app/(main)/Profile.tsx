@@ -5,6 +5,7 @@ import { ArrowLeft, Camera, Pencil, User } from "lucide-react-native";
 import { useTheme } from "../../hooks/useTheme";
 import { useProfileStyles } from "./Styles";
 import { useRouter } from "expo-router";
+import CustomHeader from "@/components/CustomHeader/CustomHeader";
 
 const Profile = () => {
     const { colors } = useTheme();
@@ -41,7 +42,14 @@ const Profile = () => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.header}>
+            <CustomHeader
+                title="Profile"
+                showBack={true}
+                backLabel="Back"
+                colors={colors}
+                onBack={() => router.push("/(main)/(tabs)/More")}
+            />
+            {/* <View style={styles.header}>
                 <Text style={styles.headerTitle}>Profile</Text>
                 <TouchableOpacity
                     style={styles.backBtn}
@@ -50,7 +58,7 @@ const Profile = () => {
                     <ArrowLeft size={18} color="#fff" />
                     <Text style={styles.saveBtnText}>Back</Text>
                 </TouchableOpacity>
-            </View>
+            </View> */}
             <View style={styles.avatarSection}>
                 <View style={styles.avatarWrapper}>
                     {image ? (

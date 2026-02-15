@@ -10,6 +10,7 @@ import { useTheme } from "../../hooks/useTheme";
 import { useAboutStyles } from "./Styles";
 import { ArrowLeft, Info } from "lucide-react-native";
 import { useRouter } from "expo-router";
+import CustomHeader from "@/components/CustomHeader/CustomHeader";
 
 export default function AboutUs() {
     const { colors } = useTheme();
@@ -17,7 +18,14 @@ export default function AboutUs() {
     const router = useRouter();
     return (
         <View style={styles.container}>
-            <View style={styles.header}>
+            <CustomHeader
+                title="About Us"
+                showBack={true}
+                backLabel="Back"
+                colors={colors}
+                onBack={() => router.push("/(main)/(tabs)/More")}
+            />
+            {/* <View style={styles.header}>
                 <Text style={styles.headerTitle}>About Us</Text>
                 <TouchableOpacity
                     style={styles.backBtn}
@@ -26,7 +34,7 @@ export default function AboutUs() {
                     <ArrowLeft size={18} color="#fff" />
                     <Text style={styles.saveBtnText}>Back</Text>
                 </TouchableOpacity>
-            </View>
+            </View> */}
             <ScrollView contentContainerStyle={styles.content}>
                 <View style={styles.iconCircle}>
                     <Info size={36} color="#fff" />

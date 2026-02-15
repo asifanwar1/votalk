@@ -4,6 +4,7 @@ import { useTheme } from "../../hooks/useTheme";
 import { usePrivacyPolicyStyles } from "./Styles";
 import { ArrowLeft, Shield } from "lucide-react-native";
 import { useRouter } from "expo-router";
+import CustomHeader from "@/components/CustomHeader/CustomHeader";
 
 const PRIVACY_TEXT = `
 Your privacy is important to us. Votalk collects only the data necessary to provide and improve your language learning experience. We do not sell or share your personal information with third parties.
@@ -22,7 +23,7 @@ const PrivacyPolicy = () => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.header}>
+            {/* <View style={styles.header}>
                 <Text style={styles.headerTitle}>Privacy Policy</Text>
                 <TouchableOpacity
                     style={styles.backBtn}
@@ -31,7 +32,14 @@ const PrivacyPolicy = () => {
                     <ArrowLeft size={18} color="#fff" />
                     <Text style={styles.saveBtnText}>Back</Text>
                 </TouchableOpacity>
-            </View>
+            </View> */}
+            <CustomHeader
+                title="Privacy Policy"
+                showBack={true}
+                backLabel="Back"
+                colors={colors}
+                onBack={() => router.push("/(main)/(tabs)/More")}
+            />
             <ScrollView contentContainerStyle={styles.content}>
                 <View style={styles.iconCircle}>
                     <Shield size={36} color="#fff" />
