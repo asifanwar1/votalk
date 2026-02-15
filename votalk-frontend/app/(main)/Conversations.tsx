@@ -10,6 +10,7 @@ import {
 } from "lucide-react-native";
 import { useRouter } from "expo-router";
 import CustomHeader from "@/components/CustomHeader/CustomHeader";
+import { ConversationItem } from "@/components/ConversationItem/ConversationItem";
 
 const chatHistory = [
     {
@@ -41,25 +42,33 @@ const Conversations = () => {
     const router = useRouter();
 
     const renderItem = ({ item }: { item: (typeof chatHistory)[0] }) => (
-        <TouchableOpacity
-            style={styles.item}
+        // <TouchableOpacity
+        //     style={styles.item}
+        //     onPress={() => router.push("/(main)/(tabs)/More")}
+        //     activeOpacity={0.85}
+        // >
+        //     <View style={styles.itemIcon}>
+        //         <MessageSquareText size={28} color={colors.primary} />
+        //     </View>
+        //     <View style={styles.itemContent}>
+        //         <Text style={styles.itemTitle}>{item.title}</Text>
+        //         <Text style={styles.itemPreview}>{item.preview}</Text>
+        //         <View style={styles.itemMeta}>
+        //             <Clock size={14} color={colors.textSecondary} />
+        //             <Text style={styles.itemDate}>{item.date}</Text>
+        //             <Text style={styles.itemScore}>Score: {item.score}</Text>
+        //         </View>
+        //     </View>
+        //     <ArrowRight size={20} color={colors.textSecondary} />
+        // </TouchableOpacity>
+        <ConversationItem
+            key={item.id}
+            title={item.title}
+            preview={item.preview}
+            date={item.date}
+            score={item.score}
             onPress={() => router.push("/(main)/(tabs)/More")}
-            activeOpacity={0.85}
-        >
-            <View style={styles.itemIcon}>
-                <MessageSquareText size={28} color={colors.primary} />
-            </View>
-            <View style={styles.itemContent}>
-                <Text style={styles.itemTitle}>{item.title}</Text>
-                <Text style={styles.itemPreview}>{item.preview}</Text>
-                <View style={styles.itemMeta}>
-                    <Clock size={14} color={colors.textSecondary} />
-                    <Text style={styles.itemDate}>{item.date}</Text>
-                    <Text style={styles.itemScore}>Score: {item.score}</Text>
-                </View>
-            </View>
-            <ArrowRight size={20} color={colors.textSecondary} />
-        </TouchableOpacity>
+        />
     );
 
     return (
