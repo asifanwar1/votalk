@@ -282,7 +282,7 @@ export const useRegisterStyles = () => {
         passwordHint: {
             fontSize: 12,
             color: colors.textSecondary,
-            marginTop: 4,
+            marginTop: -10,
             marginLeft: 2,
         },
         checkboxRow: {
@@ -373,6 +373,9 @@ export const useRegisterStyles = () => {
         signinLink: {
             color: colors.secondary,
             fontWeight: "600",
+        },
+        passwordRow: {
+            flexDirection: "row",
         },
         trustContainer: {
             backgroundColor: "#faf5ff",

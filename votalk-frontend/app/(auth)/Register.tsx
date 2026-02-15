@@ -18,6 +18,7 @@ import {
 import { useRegisterStyles } from "./Styles";
 import { useRouter } from "expo-router";
 import { Button } from "../../components/Button/Button";
+import { CustomInput } from "@/components/Input/Input";
 
 const Register = () => {
     const [formData, setFormData] = useState({
@@ -50,96 +51,87 @@ const Register = () => {
                     <View style={styles.formContainer}>
                         <Text style={styles.signUpTitle}>Create Account</Text>
 
-                        <View style={{ marginBottom: 16 }}>
-                            <Text style={styles.label}>Full Name</Text>
-                            <View style={styles.inputWrapper}>
-                                <User size={20} style={styles.inputIcon} />
-                                <TextInput
-                                    style={styles.input}
-                                    placeholder="John Doe"
-                                    value={formData.name}
-                                    onChangeText={(text) =>
-                                        setFormData({ ...formData, name: text })
-                                    }
-                                    autoCapitalize="words"
+                        <CustomInput
+                            label="Full Name"
+                            value={formData.name}
+                            onChangeText={(text) =>
+                                setFormData({
+                                    ...formData,
+                                    name: text,
+                                })
+                            }
+                            placeholder="John Doe"
+                            keyboardType="default"
+                            startIcon={
+                                <User
+                                    size={20}
+                                    color={styles.inputIcon.color}
                                 />
-                            </View>
-                        </View>
+                            }
+                        />
+                        <CustomInput
+                            label="Email"
+                            value={formData.email}
+                            onChangeText={(text) =>
+                                setFormData({
+                                    ...formData,
+                                    email: text,
+                                })
+                            }
+                            placeholder="your.email@example.com"
+                            keyboardType="email-address"
+                            startIcon={
+                                <Mail
+                                    size={20}
+                                    color={styles.inputIcon.color}
+                                />
+                            }
+                        />
 
-                        <View style={{ marginBottom: 16 }}>
-                            <Text style={styles.label}>Email</Text>
-                            <View style={styles.inputWrapper}>
-                                <Mail size={20} style={styles.inputIcon} />
-                                <TextInput
-                                    style={styles.input}
-                                    placeholder="your.email@example.com"
-                                    value={formData.email}
-                                    onChangeText={(text) =>
-                                        setFormData({
-                                            ...formData,
-                                            email: text,
-                                        })
-                                    }
-                                    keyboardType="email-address"
-                                    autoCapitalize="none"
-                                />
-                            </View>
-                        </View>
-
-                        <View style={{ marginBottom: 16 }}>
-                            <Text style={styles.label}>Password</Text>
-                            <View style={styles.inputWrapper}>
-                                <Lock size={20} style={styles.inputIcon} />
-                                <TextInput
-                                    style={styles.input}
-                                    placeholder="Enter password"
-                                    value={formData.password}
-                                    onChangeText={(text) =>
-                                        setFormData({
-                                            ...formData,
-                                            password: text,
-                                        })
-                                    }
-                                    secureTextEntry={!showPassword}
-                                    autoCapitalize="none"
-                                />
-                                <TouchableOpacity
-                                    style={styles.eyeButton}
-                                    onPress={() =>
-                                        setShowPassword((prev) => !prev)
-                                    }
-                                >
-                                    {showPassword ? (
-                                        <EyeOff size={20} color="#888" />
-                                    ) : (
-                                        <Eye size={20} color="#888" />
-                                    )}
-                                </TouchableOpacity>
-                            </View>
+                        <View style={styles.passwordRow}>
+                            <CustomInput
+                                label="Password"
+                                value={formData.password}
+                                onChangeText={(text) =>
+                                    setFormData({
+                                        ...formData,
+                                        password: text,
+                                    })
+                                }
+                                placeholder="Enter your password"
+                                secureTextEntry={true}
+                                startIcon={
+                                    <Lock
+                                        size={20}
+                                        color={styles.inputIcon.color}
+                                    />
+                                }
+                                showPasswordToggle={true}
+                            />
                             <Text style={styles.passwordHint}>
                                 At least 8 characters with numbers & symbols
                             </Text>
                         </View>
 
-                        <View style={{ marginBottom: 24 }}>
-                            <Text style={styles.label}>Confirm Password</Text>
-                            <View style={styles.inputWrapper}>
-                                <Lock size={20} style={styles.inputIcon} />
-                                <TextInput
-                                    style={styles.input}
-                                    placeholder="Confirm your password"
-                                    value={formData.confirmPassword}
-                                    onChangeText={(text) =>
-                                        setFormData({
-                                            ...formData,
-                                            confirmPassword: text,
-                                        })
-                                    }
-                                    secureTextEntry={!showPassword}
-                                    autoCapitalize="none"
+                        <CustomInput
+                            label="Confirm Password"
+                            value={formData.confirmPassword}
+                            onChangeText={(text) =>
+                                setFormData({
+                                    ...formData,
+                                    confirmPassword: text,
+                                })
+                            }
+                            placeholder="Confirm your password"
+                            secureTextEntry={true}
+                            startIcon={
+                                <Lock
+                                    size={20}
+                                    color={styles.inputIcon.color}
                                 />
-                            </View>
-                        </View>
+                            }
+                            showPasswordToggle={true}
+                        />
 
                         <View style={styles.checkboxRow}>
                             <TouchableOpacity
