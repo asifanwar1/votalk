@@ -14,13 +14,36 @@ import { LinearGradient } from "expo-linear-gradient";
 import { useHomeStyles } from "./Styles";
 import { useTheme } from "../../../hooks/useTheme";
 import { useRouter } from "expo-router";
+import { Stats } from "@/components/Stats/Stats";
+import { ModeCard } from "@/components/ModeCard/ModeCard";
+import { SessionCard } from "@/components/SessionCard/SessionCard";
+import { QuickStartButton } from "@/components/QuickStartButton/QuickStartButton";
 
 export default function Home() {
-    const [activeTab, setActiveTab] = useState("home");
-    const [isRecording, setIsRecording] = useState(false);
     const styles = useHomeStyles();
     const { colors } = useTheme();
     const router = useRouter();
+
+    const stats = [
+        {
+            value: "127",
+            label: "Streak Days",
+            color: "#fff",
+            labelColor: "#fff",
+        },
+        {
+            value: "84%",
+            label: "Avg Score",
+            color: "#fff",
+            labelColor: "#fff",
+        },
+        {
+            value: "23",
+            label: "Hours",
+            color: "#fff",
+            labelColor: "#fff",
+        },
+    ];
 
     const conversationModes = [
         {
@@ -100,30 +123,13 @@ export default function Home() {
                     </View>
 
                     <View style={styles.statsCard}>
-                        <View style={styles.statsRow}>
-                            <View style={styles.statItem}>
-                                <Text style={styles.statValue}>127</Text>
-                                <Text style={styles.statLabel}>
-                                    Streak Days
-                                </Text>
-                            </View>
-                            <View
-                                style={[styles.statItem, styles.statItemBorder]}
-                            >
-                                <Text style={styles.statValue}>84%</Text>
-                                <Text style={styles.statLabel}>Avg Score</Text>
-                            </View>
-                            <View style={styles.statItem}>
-                                <Text style={styles.statValue}>23</Text>
-                                <Text style={styles.statLabel}>Hours</Text>
-                            </View>
-                        </View>
+                        <Stats stats={stats} />
                     </View>
                 </LinearGradient>
 
                 <View style={styles.section}>
                     <Text style={styles.sectionTitle}>Quick Start</Text>
-                    <TouchableOpacity
+                    {/* <TouchableOpacity
                         onPress={() => router.push("/Speak")}
                         activeOpacity={0.8}
                     >
@@ -153,36 +159,22 @@ export default function Home() {
                                 <ChevronRight size={24} color="#fff" />
                             </View>
                         </LinearGradient>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
+                    <QuickStartButton onPress={() => router.push("/Speak")} />
                 </View>
 
                 <View style={styles.section}>
                     <Text style={styles.sectionTitle}>Choose Your Scene</Text>
                     <View style={styles.modesGrid}>
                         {conversationModes.map((mode) => (
-                            <TouchableOpacity
+                            <ModeCard
                                 key={mode.id}
-                                onPress={() => setActiveTab("conversation")}
-                                activeOpacity={0.8}
-                                style={styles.modeButtonWrapper}
-                            >
-                                <View
-                                    style={[
-                                        styles.modeButton,
-                                        { backgroundColor: mode.color },
-                                    ]}
-                                >
-                                    <Text style={styles.modeIcon}>
-                                        {mode.icon}
-                                    </Text>
-                                    <Text style={styles.modeTitle}>
-                                        {mode.title}
-                                    </Text>
-                                    <Text style={styles.modeDesc}>
-                                        {mode.desc}
-                                    </Text>
-                                </View>
-                            </TouchableOpacity>
+                                icon={mode.icon}
+                                title={mode.title}
+                                desc={mode.desc}
+                                color={mode.color}
+                                onPress={() => {}}
+                            />
                         ))}
                     </View>
                 </View>
@@ -191,36 +183,13 @@ export default function Home() {
                     <Text style={styles.sectionTitle}>Recent Sessions</Text>
                     <View style={styles.sessionsList}>
                         {recentSessions.map((session, idx) => (
-                            <View key={idx} style={styles.sessionCard}>
-                                <View style={styles.sessionContent}>
-                                    <View style={styles.sessionLeft}>
-                                        <Text style={styles.sessionTopic}>
-                                            {session.topic}
-                                        </Text>
-                                        <Text style={styles.sessionTime}>
-                                            {session.time}
-                                        </Text>
-                                    </View>
-                                    <View style={styles.sessionRight}>
-                                        <Text style={styles.sessionScore}>
-                                            {session.score}
-                                        </Text>
-                                        <View
-                                            style={styles.improvementContainer}
-                                        >
-                                            <TrendingUp
-                                                size={12}
-                                                color={colors.improvement}
-                                            />
-                                            <Text
-                                                style={styles.improvementText}
-                                            >
-                                                {session.improvement}
-                                            </Text>
-                                        </View>
-                                    </View>
-                                </View>
-                            </View>
+                            <SessionCard
+                                key={idx}
+                                topic={session.topic}
+                                time={session.time}
+                                score={session.score}
+                                improvement={session.improvement}
+                            />
                         ))}
                     </View>
                 </View>

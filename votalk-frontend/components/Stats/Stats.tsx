@@ -8,6 +8,7 @@ type Stats = {
     value: string;
     label: string;
     color?: string;
+    labelColor?: string;
 };
 
 type StatsProps = {
@@ -19,22 +20,29 @@ export const Stats: React.FC<StatsProps> = ({ stats }) => {
     const styles = getStatsStyles(colors);
 
     return (
-        <View style={styles.trustRow}>
+        <View style={styles.statsRow}>
             {stats.map((stat, idx) => (
                 <React.Fragment key={stat.label}>
-                    <View style={styles.trustItem}>
+                    <View style={styles.statsItem}>
                         <Text
                             style={[
-                                styles.trustValue,
+                                styles.statsValue,
                                 stat.color ? { color: stat.color } : {},
                             ]}
                         >
                             {stat.value}
                         </Text>
-                        <Text style={styles.trustLabel}>{stat.label}</Text>
+                        <Text
+                            style={[
+                                styles.statsLabel,
+                                { color: stat.labelColor },
+                            ]}
+                        >
+                            {stat.label}
+                        </Text>
                     </View>
                     {idx < stats.length - 1 && (
-                        <View style={styles.trustDivider} />
+                        <View style={styles.statsDivider} />
                     )}
                 </React.Fragment>
             ))}
