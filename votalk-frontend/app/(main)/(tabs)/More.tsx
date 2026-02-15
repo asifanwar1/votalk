@@ -12,6 +12,7 @@ import {
     Mail,
     Settings,
     CircleEllipsis,
+    FileText,
 } from "lucide-react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useTheme } from "../../../hooks/useTheme";
@@ -50,6 +51,11 @@ const MORE_ITEMS = [
         icon: <Shield size={22} color="#8b5cf6" />,
         label: "Privacy Policy",
         route: ROUTE_PATHS.APP.PRIVACY_POLICY,
+    },
+    {
+        icon: <FileText size={22} color="#8b5cf6" />,
+        label: "Terms of Service",
+        route: ROUTE_PATHS.APP.TERMS,
     },
     {
         icon: <Mail size={22} color="#8b5cf6" />,
