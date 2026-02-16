@@ -18,7 +18,7 @@ import { Stats } from "@/components/Stats/Stats";
 import { ModeCard } from "@/components/ModeCard/ModeCard";
 import { SessionCard } from "@/components/SessionCard/SessionCard";
 import { QuickStartButton } from "@/components/QuickStartButton/QuickStartButton";
-import { stats } from "@/mock-data/stats";
+import { stats, recentSessions } from "@/mock-data/stats";
 
 export default function Home() {
     const styles = useHomeStyles();
@@ -53,27 +53,6 @@ export default function Home() {
             title: "Daily Life",
             color: colors.modeDaily,
             desc: "Casual Conversations",
-        },
-    ];
-
-    const recentSessions = [
-        {
-            score: 87,
-            topic: "Airport Check-in",
-            time: "2m ago",
-            improvement: "+12",
-        },
-        {
-            score: 92,
-            topic: "Restaurant Order",
-            time: "1h ago",
-            improvement: "+5",
-        },
-        {
-            score: 78,
-            topic: "Job Interview",
-            time: "Yesterday",
-            improvement: "+8",
         },
     ];
 

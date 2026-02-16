@@ -18,3 +18,24 @@ export const stats = [
         labelColor: "#fff",
     },
 ];
+
+export const recentSessions = [
+    {
+        score: 87,
+        topic: "Airport Check-in",
+        time: "2m ago",
+        improvement: "+12",
+    },
+    {
+        score: 92,
+        topic: "Restaurant Order",
+        time: "1h ago",
+        improvement: "+5",
+    },
+    {
+        score: 78,
+        topic: "Job Interview",
+        time: "Yesterday",
+        improvement: "+8",
+    },
+];
