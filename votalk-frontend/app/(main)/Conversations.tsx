@@ -48,16 +48,6 @@ const Conversations = () => {
 
     return (
         <View style={styles.container}>
-            {/* <View style={styles.header}>
-                <Text style={styles.headerTitle}>Chat History</Text>
-                <TouchableOpacity
-                    style={styles.backBtn}
-                    onPress={() => router.push("/(main)/(tabs)/More")}
-                >
-                    <ArrowLeft size={18} color="#fff" />
-                    <Text style={styles.saveBtnText}>Back</Text>
-                </TouchableOpacity>
-            </View> */}
             <CustomHeader
                 title="Chat History"
                 showBack={true}

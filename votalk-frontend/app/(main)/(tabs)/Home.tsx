@@ -18,32 +18,12 @@ import { Stats } from "@/components/Stats/Stats";
 import { ModeCard } from "@/components/ModeCard/ModeCard";
 import { SessionCard } from "@/components/SessionCard/SessionCard";
 import { QuickStartButton } from "@/components/QuickStartButton/QuickStartButton";
+import { stats } from "@/mock-data/stats";
 
 export default function Home() {
     const styles = useHomeStyles();
     const { colors } = useTheme();
     const router = useRouter();
-
-    const stats = [
-        {
-            value: "127",
-            label: "Streak Days",
-            color: "#fff",
-            labelColor: "#fff",
-        },
-        {
-            value: "84%",
-            label: "Avg Score",
-            color: "#fff",
-            labelColor: "#fff",
-        },
-        {
-            value: "23",
-            label: "Hours",
-            color: "#fff",
-            labelColor: "#fff",
-        },
-    ];
 
     const conversationModes = [
         {
