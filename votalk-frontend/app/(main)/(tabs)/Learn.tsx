@@ -4,13 +4,7 @@ import { BookOpen, Zap, BookText } from "lucide-react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useLearnStyles } from "./Styles";
 import { useTheme } from "../../../hooks/useTheme";
-
-const vocabList = [
-    "Boarding pass",
-    "Departure gate",
-    "Baggage claim",
-    "Customs",
-];
+import { vocabList } from "@/mock-data/learning";
 
 const Learn = () => {
     const styles = useLearnStyles();
