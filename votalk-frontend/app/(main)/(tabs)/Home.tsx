@@ -1,10 +1,7 @@
-import React, { useState } from "react";
-import { Text, View, ScrollView, TouchableOpacity } from "react-native";
+import React from "react";
+import { Text, View, ScrollView } from "react-native";
 import {
     BotMessageSquare,
-    Mic,
-    ChevronRight,
-    TrendingUp,
     Plane,
     Briefcase,
     ShoppingCart,
@@ -88,37 +85,7 @@ export default function Home() {
 
                 <View style={styles.section}>
                     <Text style={styles.sectionTitle}>Quick Start</Text>
-                    {/* <TouchableOpacity
-                        onPress={() => router.push("/Speak")}
-                        activeOpacity={0.8}
-                    >
-                        <LinearGradient
-                            colors={[
-                                colors.headerGradient1,
-                                colors.headerGradient2,
-                            ]}
-                            start={{ x: 0, y: 0 }}
-                            end={{ x: 1, y: 0 }}
-                            style={styles.quickStartButton}
-                        >
-                            <View style={styles.quickStartContent}>
-                                <View style={styles.quickStartLeft}>
-                                    <View style={styles.micContainer}>
-                                        <Mic size={24} color="#fff" />
-                                    </View>
-                                    <View>
-                                        <Text style={styles.quickStartTitle}>
-                                            Start Speaking
-                                        </Text>
-                                        <Text style={styles.quickStartSubtitle}>
-                                            Practice conversation now
-                                        </Text>
-                                    </View>
-                                </View>
-                                <ChevronRight size={24} color="#fff" />
-                            </View>
-                        </LinearGradient>
-                    </TouchableOpacity> */}
+
                     <QuickStartButton onPress={() => router.push("/Speak")} />
                 </View>
 

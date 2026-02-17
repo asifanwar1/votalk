@@ -1,5 +1,4 @@
-import { Tabs, useFocusEffect, usePathname } from "expo-router";
-import { useCallback, useEffect } from "react";
+import { Tabs, usePathname } from "expo-router";
 
 import {
     Home,

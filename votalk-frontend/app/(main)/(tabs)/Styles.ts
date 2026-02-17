@@ -556,33 +556,6 @@ export const useMoreStyles = () => {
             paddingHorizontal: 24,
             marginTop: 24,
         },
-        // moreItem: {
-        //     flexDirection: "row",
-        //     alignItems: "center",
-        //     justifyContent: "space-between",
-        //     backgroundColor: colors.card,
-        //     borderRadius: 16,
-        //     paddingVertical: 16,
-        //     paddingHorizontal: 18,
-        //     marginBottom: 12,
-        //     shadowColor: "#000",
-        //     shadowOpacity: 0.04,
-        //     shadowRadius: 4,
-        //     shadowOffset: { width: 0, height: 1 },
-        //     elevation: 1,
-        //     borderWidth: 1,
-        //     borderColor: colors.border,
-        // },
-        // moreItemLeft: {
-        //     flexDirection: "row",
-        //     alignItems: "center",
-        //     gap: 12,
-        // },
-        // moreItemLabel: {
-        //     fontSize: 16,
-        //     color: colors.textPrimary,
-        //     fontWeight: "500",
-        // },
     });
 };
 

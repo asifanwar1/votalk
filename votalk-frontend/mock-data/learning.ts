@@ -4,3 +4,12 @@ export const vocabList = [
     "Baggage claim",
     "Customs",
 ];
+
+export const languages = [
+    "English",
+    "Arabic",
+    "Spanish",
+    "French",
+    "German",
+    "Chinese",
+];

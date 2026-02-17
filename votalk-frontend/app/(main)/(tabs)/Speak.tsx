@@ -12,20 +12,14 @@ import {
 import { useSpeakStyles } from "./Styles";
 import { useTheme } from "../../../hooks/useTheme";
 import { router } from "expo-router";
+import { languages } from "@/mock-data/learning";
 
 const Speak = () => {
     const [isRecording, setIsRecording] = useState(false);
     const [selectedLanguage, setSelectedLanguage] = useState("English");
     const styles = useSpeakStyles();
     const { colors } = useTheme();
-    const languages = [
-        "English",
-        "Arabic",
-        "Spanish",
-        "French",
-        "German",
-        "Chinese",
-    ];
+
     return (
         <View style={styles.container}>
             <View style={styles.header}>
