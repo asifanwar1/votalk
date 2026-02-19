@@ -37,7 +37,6 @@ const Progress = () => {
                 </LinearGradient>
 
                 <View style={styles.section}>
-                    {/* Level Card */}
                     <View style={styles.levelCard}>
                         <View style={styles.levelRow}>
                             <Award size={28} color="#fff" />
@@ -61,7 +60,6 @@ const Progress = () => {
                         </Text>
                     </View>
 
-                    {/* Weekly Stats */}
                     <View style={styles.statsCard}>
                         <Text style={styles.statsTitle}>Weekly Stats</Text>
                         <View style={styles.statsGrid}>
