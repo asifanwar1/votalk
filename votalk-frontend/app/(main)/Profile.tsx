@@ -49,16 +49,7 @@ const Profile = () => {
                 colors={colors}
                 onBack={() => router.push("/(main)/(tabs)/More")}
             />
-            {/* <View style={styles.header}>
-                <Text style={styles.headerTitle}>Profile</Text>
-                <TouchableOpacity
-                    style={styles.backBtn}
-                    onPress={() => router.push("/(main)/(tabs)/More")}
-                >
-                    <ArrowLeft size={18} color="#fff" />
-                    <Text style={styles.saveBtnText}>Back</Text>
-                </TouchableOpacity>
-            </View> */}
+
             <View style={styles.avatarSection}>
                 <View style={styles.avatarWrapper}>
                     {image ? (

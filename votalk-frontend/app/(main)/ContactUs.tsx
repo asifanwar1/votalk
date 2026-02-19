@@ -11,13 +11,7 @@ import {
     Platform,
 } from "react-native";
 import { useTheme } from "../../hooks/useTheme";
-import {
-    ArrowLeft,
-    Mail,
-    SendHorizonal,
-    Phone,
-    MessageCircle,
-} from "lucide-react-native";
+import { Mail, SendHorizonal, Phone, MessageCircle } from "lucide-react-native";
 import { useRouter } from "expo-router";
 import { useContactUsStyles } from "./Styles";
 import CustomHeader from "@/components/CustomHeader/CustomHeader";
@@ -57,16 +51,6 @@ const ContactUs = () => {
 
     return (
         <View style={styles.container}>
-            {/* <View style={styles.header}>
-                <Text style={styles.headerTitle}>Contact Us</Text>
-                <TouchableOpacity
-                    style={styles.backBtn}
-                    onPress={() => router.push("/(main)/(tabs)/More")}
-                >
-                    <ArrowLeft size={18} color="#fff" />
-                    <Text style={styles.saveBtnText}>Back</Text>
-                </TouchableOpacity>
-            </View> */}
             <CustomHeader
                 title="Contact Us"
                 showBack={true}
