@@ -21,3 +21,9 @@ export const chatHistory = [
         score: 78,
     },
 ];
+
+export const AI_MODELS = [
+    { label: "GPT-4", value: "gpt-4" },
+    { label: "GPT-3.5", value: "gpt-3.5" },
+    { label: "Claude 3", value: "claude-3" },
+];

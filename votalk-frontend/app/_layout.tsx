@@ -1,11 +1,9 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { Slot, Stack } from "expo-router";
-import { StatusBar } from "expo-status-bar";
+import { StyleSheet } from "react-native";
+import { Stack } from "expo-router";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { KeyboardProvider } from "react-native-keyboard-controller";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-// import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 
 const MainLayout = () => {
     return (

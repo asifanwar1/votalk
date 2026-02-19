@@ -22,12 +22,7 @@ import {
 } from "lucide-react-native";
 import { useRouter } from "expo-router";
 import CustomHeader from "@/components/CustomHeader/CustomHeader";
-
-const AI_MODELS = [
-    { label: "GPT-4", value: "gpt-4" },
-    { label: "GPT-3.5", value: "gpt-3.5" },
-    { label: "Claude 3", value: "claude-3" },
-];
+import { AI_MODELS } from "@/mock-data/chat";
 
 export default function Settings() {
     const { colors, isDark } = useTheme();
@@ -59,16 +54,6 @@ export default function Settings() {
 
     return (
         <View style={styles.container}>
-            {/* <View style={styles.header}>
-                <Text style={styles.headerTitle}>Settings</Text>
-                <TouchableOpacity
-                    style={styles.backBtn}
-                    onPress={() => router.push("/(main)/(tabs)/More")}
-                >
-                    <ArrowLeft size={18} color="#fff" />
-                    <Text style={styles.saveBtnText}>Back</Text>
-                </TouchableOpacity>
-            </View> */}
             <CustomHeader
                 title="Settings"
                 showBack={true}
