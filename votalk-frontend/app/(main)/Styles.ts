@@ -543,3 +543,58 @@ export const useNotificationStyles = () => {
         },
     });
 };
+
+export const useNotFoundStyles = () => {
+    const { colors } = useTheme();
+    return StyleSheet.create({
+        container: {
+            flex: 1,
+            backgroundColor: colors.background,
+        },
+        content: {
+            flex: 1,
+            alignItems: "center",
+            justifyContent: "center",
+            padding: 24,
+        },
+        iconCircle: {
+            width: 72,
+            height: 72,
+            borderRadius: 36,
+            backgroundColor: colors.primary,
+            alignItems: "center",
+            justifyContent: "center",
+            marginBottom: 20,
+        },
+        title: {
+            fontSize: 24,
+            fontWeight: "bold",
+            color: colors.textPrimary,
+            marginBottom: 8,
+            textAlign: "center",
+        },
+        subtitle: {
+            fontSize: 16,
+            color: colors.textSecondary,
+            marginBottom: 24,
+            textAlign: "center",
+        },
+        homeBtn: {
+            backgroundColor: colors.primary,
+            borderRadius: 16,
+            paddingVertical: 14,
+            paddingHorizontal: 32,
+            alignItems: "center",
+            shadowColor: colors.primary,
+            shadowOpacity: 0.12,
+            shadowRadius: 8,
+            shadowOffset: { width: 0, height: 2 },
+            elevation: 2,
+        },
+        homeBtnText: {
+            color: "#fff",
+            fontWeight: "bold",
+            fontSize: 16,
+        },
+    });
+};
