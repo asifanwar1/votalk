@@ -1,7 +1,7 @@
 import React from "react";
 import { Modal, View, Text, TouchableOpacity } from "react-native";
 import { useTheme } from "../../hooks/useTheme";
-import { useCustomModalStyles } from "./styles";
+import { useCustomModalStyles } from "./Styles";
 
 interface CustomModalProps {
     visible: boolean;
