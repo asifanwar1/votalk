@@ -11,6 +11,7 @@ import { useOtpStyles } from "./Styles";
 import { Mail } from "lucide-react-native";
 import { Button } from "../../components/Button/Button";
 import { OtpInput } from "@/components/OtpInput/OtpInput";
+import { ROUTE_PATHS } from "@/routes/routes";
 
 const OTP_LENGTH = 4;
 
@@ -22,7 +23,7 @@ const Otp = () => {
 
     const handleSubmit = () => {
         setSubmitted(true);
-        router.push("/(auth)/ChangePassword");
+        router.push(ROUTE_PATHS.AUTH.RESET_PASSWORD);
     };
 
     return (
@@ -72,7 +73,7 @@ const Otp = () => {
 
                         <Button
                             title="Back to Login"
-                            onPress={() => router.push("/(auth)/Login")}
+                            onPress={() => router.push(ROUTE_PATHS.AUTH.LOGIN)}
                             buttonStyles={{
                                 alignItems: "center",
                                 marginTop: 16,

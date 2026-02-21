@@ -21,6 +21,7 @@ import { Button } from "../../components/Button/Button";
 import { CustomInput } from "@/components/Input/Input";
 import { ROUTE_PATHS } from "@/routes/routes";
 import { Stats } from "@/components/Stats/Stats";
+import { activeStats } from "@/mock-data/stats";
 
 const Register = () => {
     const [formData, setFormData] = useState({
@@ -29,23 +30,6 @@ const Register = () => {
         password: "",
         confirmPassword: "",
     });
-    const stats = [
-        {
-            value: "500K+",
-            label: "Active Learners",
-            color: "#8b5cf6",
-        },
-        {
-            value: "4.9★",
-            label: "App Rating",
-            color: "#fb7185",
-        },
-        {
-            value: "20+",
-            label: "Languages",
-            color: "#f59e42",
-        },
-    ];
 
     const styles = useRegisterStyles();
     const router = useRouter();
@@ -214,7 +198,9 @@ const Register = () => {
 
                             <Button
                                 title="Sign In"
-                                onPress={() => router.push("/(auth)/Login")}
+                                onPress={() =>
+                                    router.push(ROUTE_PATHS.AUTH.LOGIN)
+                                }
                                 buttonStyles={styles.signInButton}
                                 textStyles={styles.signinLink}
                             />
@@ -222,7 +208,7 @@ const Register = () => {
                     </View>
 
                     <View style={styles.trustContainer}>
-                        <Stats stats={stats} />
+                        <Stats stats={activeStats} />
                     </View>
                 </View>
             </ScrollView>

@@ -3,7 +3,7 @@ export enum AUTH_ROUTES {
     LOGIN = "Login",
     REGISTER = "Register",
     FORGOT_PASSWORD = "ForgotPassword",
-    RESET_PASSWORD = "ResetPassword",
+    RESET_PASSWORD = "ChangePassword",
     VERIFY_OTP = "Otp",
 }
 

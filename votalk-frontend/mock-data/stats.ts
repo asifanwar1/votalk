@@ -39,3 +39,21 @@ export const recentSessions = [
         improvement: "+8",
     },
 ];
+
+export const activeStats = [
+    {
+        value: "500K+",
+        label: "Active Learners",
+        color: "#8b5cf6",
+    },
+    {
+        value: "4.9★",
+        label: "App Rating",
+        color: "#fb7185",
+    },
+    {
+        value: "20+",
+        label: "Languages",
+        color: "#f59e42",
+    },
+];

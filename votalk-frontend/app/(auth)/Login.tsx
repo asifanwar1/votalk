@@ -25,6 +25,7 @@ import { useLoginStyles } from "./Styles";
 import { Button } from "../../components/Button/Button";
 import { FeatureItem } from "@/components/FeatureItem/FeatureItem";
 import { CustomInput } from "@/components/Input/Input";
+import { ROUTE_PATHS } from "@/routes/routes";
 
 const Login = () => {
     const [formData, setFormData] = useState({
@@ -131,7 +132,8 @@ const Login = () => {
                                         title="Forgot Password?"
                                         onPress={() =>
                                             router.push(
-                                                "/(auth)/ForgotPassword",
+                                                ROUTE_PATHS.AUTH
+                                                    .FORGOT_PASSWORD,
                                             )
                                         }
                                         textStyles={styles.forgotPassword}
@@ -141,7 +143,7 @@ const Login = () => {
                                 <Button
                                     title="Sign In"
                                     onPress={() =>
-                                        router.push("/(main)/(tabs)/Home")
+                                        router.push(ROUTE_PATHS.APP.HOME)
                                     }
                                     buttonStyles={styles.signInButton}
                                     textStyles={styles.signInButtonText}
@@ -174,7 +176,9 @@ const Login = () => {
                                     <Button
                                         title="Sign Up"
                                         onPress={() =>
-                                            router.push("/(auth)/Register")
+                                            router.push(
+                                                ROUTE_PATHS.AUTH.REGISTER,
+                                            )
                                         }
                                         buttonStyles={styles.signUpButton}
                                         textStyles={styles.signupLink}
