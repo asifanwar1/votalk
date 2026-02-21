@@ -4,7 +4,7 @@ export enum AUTH_ROUTES {
     REGISTER = "Register",
     FORGOT_PASSWORD = "ForgotPassword",
     RESET_PASSWORD = "ResetPassword",
-    VERIFY_OTP = "VerifyOTP",
+    VERIFY_OTP = "Otp",
 }
 
 export enum APP_ROUTES {

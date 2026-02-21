@@ -11,6 +11,7 @@ import { useRouter } from "expo-router";
 import { useForgotPasswordStyles } from "./Styles";
 import { Button } from "../../components/Button/Button";
 import { CustomInput } from "@/components/Input/Input";
+import { ROUTE_PATHS } from "@/routes/routes";
 
 const ForgotPassword = () => {
     const [email, setEmail] = useState("");
@@ -20,7 +21,7 @@ const ForgotPassword = () => {
 
     const handleSubmit = () => {
         setSubmitted(true);
-        router.push("/(auth)/Otp");
+        router.push(ROUTE_PATHS.AUTH.VERIFY_OTP);
     };
 
     return (
@@ -75,7 +76,7 @@ const ForgotPassword = () => {
 
                         <Button
                             title="Back to Login"
-                            onPress={() => router.push("/(auth)/Login")}
+                            onPress={() => router.push(ROUTE_PATHS.AUTH.LOGIN)}
                             buttonStyles={styles.backToLoginBtn}
                             textStyles={styles.backToLoginText}
                         />
